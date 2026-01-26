@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "image" : "/public/Images/product-1-1.webp" ,
+    "secondImage" : "/public/Images/product-1-2.webp" ,
+    "Productname" : "Shield Conditioner" ,
+    "price" : "$27.00",
+    "tag" : "New"
+  }
+  ,
+  {
+    "id": 2,
+    "image" : "/Images/product-2-1.webp" ,
+    "secondImage" : "/Images/product-2-2.webp" ,
+    "Productname" : "Perfecting Facial Oil" ,
+    "price" : "$15.00",
+    "oldprice" : "$21.00",
+    "tag" : "New"
+  }
+  ,
+  {
+    "id": 3,
+    "image" : "/public/Images/product-3-1.webp" ,
+    "secondImage" : "/public/Images/product-3-2.webp" ,
+    "Productname" : "Shield Conditioner" ,
+    "price" : "$27.00",
+    "tag" : "New"
+  }
+  ,
+  {
+    "id": 4,
+    "image" : "/public/Images/product-4-1.webp" ,
+    "secondImage" : "/public/Images/product-4-2.webp" ,
+    "Productname" : "Shield Conditioner" ,
+    "price" : "$27.00",
+    "tag" : "New"
+  }
+  ,
+  {
+    "id": 5,
+    "image" : "/public/Images/product-5-1.webp" ,
+    "secondImage" : "/public/Images/product-5-2.jpg " ,
+    "Productname" : "Shield Conditioner" ,
+    "price" : "$27.00",
+    "tag" : "New"
+  }
+  ,
+  {
+    "id": 6,
+    "image" : "/public/Images/product-6-1.webp" ,
+    "secondImage" : "/public/Images/product-6-2.webp" ,
+    "Productname" : "Shield Conditioner" ,
+    "price" : "$27.00",
+    "tag" : "New"
+  }
+  ,
+  {
+    "id": 7,
+    "image" : "/public/Images/product-7-1.webp" ,
+    "secondImage" : "/public/Images/product-7-2.webp" ,
+    "Productname" : "Shield Conditioner" ,
+    "price" : "$27.00",
+    "tag" : "New"
+  }
+  ,
+  {
+    "id": 8,
+    "image" : "/public/Images/product-8-1.webp" ,
+    "secondImage" : "/public/Images/product-8-2.webp" ,
+    "Productname" : "Shield Conditioner" ,
+    "price" : "$27.00",
+    "tag" : "New"
+  }
+  ,
+  {
+    "id": 9,
+    "image" : "/public/Images/product-9-1.webp" ,
+    "secondImage" : "/public/Images/product-9-2.webp" ,
+    "Productname" : "Shield Conditioner" ,
+    "price" : "$27.00",
+    "tag" : "New"
+  }
+  ,
+  {
+    "id": 10,
+    "image" : "/public/Images/product-10-1.webp" ,
+    "secondImage" : "/public/Images/product-10-2.webp" ,
+    "Productname" : "Shield Conditioner" ,
+    "price" : "$27.00",
+    "tag" : "New"
+  }
+]

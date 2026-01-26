@@ -1,9 +1,13 @@
 import React from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, EffectFade } from 'swiper/modules'
+import { Autoplay, EffectFade, Navigation } from 'swiper/modules'
 import'swiper/css'
-import'swiper/css/effect-fade'
+import'swiper/css/effect-fade' 
+
+// Data
+
+import Products from './../../Product.json'
 
 function Index() {
   return (
@@ -23,13 +27,87 @@ function Index() {
             <SwiperSlide>
               <div className="hero-wrap hero-wrap1">
                 <div className="hero-content">
-                  <h5>- ESSENSTIAL ITEMS</h5>
+                  <h5>- ESSENSTIAL ITEMS -</h5>
                   <h1>Beauty Inspired <br /> by Real Life</h1>
-                  
+                  <p className="my-3">Made using clean, non-toxic ingredients, our products are designed for everyone</p>
+                  <a href="#" className='btn hero-btn mt-3'>Shop Now</a>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="hero-wrap hero-wrap2">
+                <div className="hero-content">
+                  <h5>- NEW COLLECTION -</h5>
+                  <h1>Get The Perfectly Hydrated Skin</h1>
+                  <p className="my-3">Made using clean, non-toxic ingredients, our products are designed for everyone</p>
+                  <a href="#" className='btn hero-btn mt-3'>Shop Now</a>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="hero-wrap hero-wrap3">
+                <div className="hero-content">
+                  <h5>- GET THE GLOW -</h5>
+                  <h1>Be Your Kind <br /> of Beauty</h1>
+                  <p className="my-3">Made using clean, non-toxic ingredients, our products are designed for everyone</p>
+                  <a href="#" className='btn hero-btn mt-3'>Shop Now</a>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>  
+        </div>
+        {/* Products */}
+        <div className="product-container py-5 my-5">
+          <div className="container position-relative">
+            <div className="row">
+              <div className="section-title mb-5 product-title text-center ">
+                <h2 className="fw-semibold fs-1">Our Featured Products</h2>
+                <p className="text-muted">Get the skin you want to feel</p>
+              </div>
+            </div>
+            <Swiper
+              slidesPerView={4}
+              spaceBetween={20}
+              modules={Navigation}
+              navigation={{ nextEl: ".product-swiper-next", prevEl: ".product-swiper-prev" }}
+              breakpoints={{
+                1399: {slidesPerView:4},
+                1199: {slidesPerView:3},
+                991: {slidesPerView:2},
+                767: {slidesPerView:1.5},
+                0: {slidesPerView:1},
+              }}   
+              className='mt-4 swiper position-relative' 
+            >
+              {Products.filter(product => product.id >= 0 && product.id <= 10).map(product => (
+                  <SwiperSlide key={product.id}>
+                    <div className="product-item text-center position-relative">
+                      <div className="product-image w-100 position-relative overflow-hidden">
+                        <img src={product.image} alt="" className='img-fluid' />
+                        <img src={product.secondImage} alt="" className='img-fluid' />
+                        <div className="product-icons gap-3">
+                          <div className="product-icon" title="Add to Wishlist">
+                            <i className="bi bi-heart fs-5"></i>
+                          </div>
+                          <div className="product-icon" title="Add to Cart">
+                            <i className="bi bi-cart3 fs-5"></i>
+                          </div>
+                          <span className={`tag badge text-white ${product.tag === 'New' ? 'bg-danger' : 'bg-success'}`}>
+                            {product.tag}
+                          </span>
+                        </div>
+                        <a href="#" className='text-decoration-none text-black'>
+                          <div className="product-content pt-3">
+                            <span className="price text-decoration-none">{product.price}</span>
+                            <h3 className='title pt-1'>{product.Productname}</h3>
+                          </div>
+                        </a>
+                       </div> 
+                    </div>
+                  </SwiperSlide>
+              ))}    
+            </Swiper>
+          </div>
         </div>
     </>
   )
