@@ -98,12 +98,10 @@ function Index() {
                             {product.tag}
                           </span>
                         </div>
-
                           <div className="product-content pt-3">
                             <span className="price text-decoration-none">{product.price}</span>
                             <h3 className='title pt-1'>{product.Productname}</h3>
                           </div>
-                        
                        </div> 
                     </div>
                     </Link>
