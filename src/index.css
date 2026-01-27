@@ -204,7 +204,6 @@ body{
   font-size: 1.2rem;
   font-weight: 500 !important;
   color: var(--text-color) !important;
-  text-transform: uppercase;
 }
 .product-item {
   cursor: pointer;

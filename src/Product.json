@@ -4,8 +4,7 @@
     "image" : "/public/Images/product-1-1.webp" ,
     "secondImage" : "/public/Images/product-1-2.webp" ,
     "Productname" : "Shield Conditioner" ,
-    "price" : "$27.00",
-    "tag" : "New"
+    "price" : "$27.00" 
   }
   ,
   {

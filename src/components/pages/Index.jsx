@@ -8,6 +8,7 @@ import'swiper/css/effect-fade'
 // Data
 
 import Products from './../../Product.json'
+import { Link } from 'react-router-dom'
 
 function Index() {
   return (
@@ -96,12 +97,12 @@ function Index() {
                             {product.tag}
                           </span>
                         </div>
-                        <a href="#" className='text-decoration-none text-black'>
+                        <Link to={`/product/${product.id}`} className='text-decoration-none text-black'>
                           <div className="product-content pt-3">
                             <span className="price text-decoration-none">{product.price}</span>
                             <h3 className='title pt-1'>{product.Productname}</h3>
                           </div>
-                        </a>
+                        </Link>
                        </div> 
                     </div>
                   </SwiperSlide>

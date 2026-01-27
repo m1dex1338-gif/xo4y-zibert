@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Nav() {
   return (
@@ -23,9 +24,9 @@ function Nav() {
 
          {/* Mobile Logo */}
 
-         <a href="#" className='navbar-brand mx-auto order-0 d-lg-none d-flex'>
+         <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex'>
             <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>XO4Y ZIBERT</h2>
-         </a>
+         </Link>
 
          {/* Mobile Icon */}
 
@@ -62,22 +63,22 @@ function Nav() {
 
            <ul className="navbar-nav nav-menu align-items-center gap-4">
             <li className="nav-item">
-              <a href="#" className='nav-link'>Home</a>
+              <Link to="/" className='nav-link'>Home</Link>
             </li>
              <li className="nav-item">
-              <a href="#" className='nav-link'>About</a>
+              <Link to="/about" className='nav-link'>About</Link>
             </li>
              <li className="nav-item">
-              <a href="#" className='nav-link'>Shop</a>
+              <Link to="/shop" className='nav-link'>Shop</Link>
             </li>
              <li className="nav-item">
-              <a href="#" className='nav-link'>Store</a>
+              <Link to="/store" className='nav-link'>Store</Link>
             </li>
              <li className="nav-item">
-              <a href="#" className='nav-link'>Blog</a>
+              <Link to="/blog" className='nav-link'>Blog</Link>
             </li>
              <li className="nav-item">
-              <a href="#" className='nav-link'>Contact</a>
+              <Link to="/contact" className='nav-link'>Contact</Link>
             </li>
            </ul>
 
