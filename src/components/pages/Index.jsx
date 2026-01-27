@@ -82,6 +82,7 @@ function Index() {
             >
               {Products.filter(product => product.id >= 0 && product.id <= 10).map(product => (
                   <SwiperSlide key={product.id}>
+                  <Link to={`/product/${product.id}`} className='text-decoration-none text-black'>
                     <div className="product-item text-center position-relative">
                       <div className="product-image w-100 position-relative overflow-hidden">
                         <img src={product.image} alt="" className='img-fluid' />
@@ -97,14 +98,15 @@ function Index() {
                             {product.tag}
                           </span>
                         </div>
-                        <Link to={`/product/${product.id}`} className='text-decoration-none text-black'>
+
                           <div className="product-content pt-3">
                             <span className="price text-decoration-none">{product.price}</span>
                             <h3 className='title pt-1'>{product.Productname}</h3>
                           </div>
-                        </Link>
+                        
                        </div> 
                     </div>
+                    </Link>
                   </SwiperSlide>
               ))}    
             </Swiper>
