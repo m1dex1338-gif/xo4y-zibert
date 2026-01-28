@@ -137,7 +137,7 @@ function ProductDetails() {
           </li>
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link tab active border-0 fw-bold fs-4 text-capitalize"
+              className="nav-link tab border-0 fw-bold fs-4 text-capitalize"
               id="shipping-tab"
               data-bs-toggle="tab"
               data-bs-target="#shipping"
