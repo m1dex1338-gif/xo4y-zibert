@@ -1,14 +1,10 @@
 import React from 'react';
 import categoriesData from '../../Categories.json'; 
+import { Link } from 'react-router-dom';
 import productsData from '../../Product.json'; 
 
 const Categories = () => {
   const categoriesList = categoriesData.categories;
-
-  const getCategoryImage = (categoryName) => {
-    const product = productsData.find(item => item && item.category === categoryName);
-    return product ? product.image : 'https://via.placeholder.com/300?text=No+Image';
-  };
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
@@ -21,6 +17,7 @@ const Categories = () => {
         gap: '30px' 
       }}>
         {categoriesList.map((category) => (
+          <Link key={category.id} to={`/category/${category.id}`} className="category-link">
           <div 
             key={category.id} 
             style={{ 
@@ -38,7 +35,7 @@ const Categories = () => {
             {/* Image */}
             <div style={{ height: '200px', overflow: 'hidden', backgroundColor: '#f9f9f9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img 
-                src={getCategoryImage(category.name)} 
+                src={category.image} 
                 alt={category.name} 
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
               />
@@ -55,6 +52,7 @@ const Categories = () => {
               </p>
             </div>
           </div>
+          </Link>
         ))}
       </div>
 

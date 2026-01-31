@@ -69,10 +69,7 @@ function Nav() {
               <Link to="/about" className='nav-link'>Про нас</Link>
             </li>
              <li className="nav-item">
-              <Link to="/shop" className='nav-link'>Каталог</Link>
-            </li>
-             <li className="nav-item">
-              <Link to="/store" className='nav-link'>Магазин</Link>
+              <Link to="/categories" className='nav-link'>Каталог</Link>
             </li>
              <li className="nav-item">
               <Link to="/blog" className='nav-link'>Блог</Link>
@@ -84,9 +81,9 @@ function Nav() {
 
            {/* Center logo */}
            
-           <a href="#" className='navbar-brand order-0 d-none d-lg-flex'>
-            <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
-           </a>
+            <Link to='/' className='navbar-brand mx-auto d-none d-lg-flex'>
+                <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
+            </Link>
            
            {/* Right Icons */}
 

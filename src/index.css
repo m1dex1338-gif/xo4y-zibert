@@ -110,7 +110,7 @@ body{
 }
 .hero-wrap {
   height: 90vh;
-  background-image: url(https://www.dybok.com.ua/image/source/1/tSNfzMZWLdHzVK8jA0UUgMD4MS3NIbXZ.jpg);
+  background-image: url(https://wowmebli.com/storage/uploaded/blog/67c88e71882a0f3cfba1be4f0a369ef1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -126,7 +126,7 @@ body{
 }
 .hero-content {
   padding: 0 8%;
-  width: 50%;
+  width: 40%;
 }
 .hero-content h5 {
   color: var(--black-color);

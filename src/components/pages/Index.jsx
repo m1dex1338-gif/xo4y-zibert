@@ -36,7 +36,7 @@ function Index() {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="hero-wrap hero-wrap1">
+              <div className="hero-wrap hero-wrap2">
                 <div className="hero-content">
                   <h5>- СУЧАСНЕ ЖИТТЯ -</h5>
                   <h1>Мінімалізм та <br /> Функціональність</h1>

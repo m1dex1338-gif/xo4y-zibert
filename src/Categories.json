@@ -1,349 +1,411 @@
-{
-  "categories": [
+{ "categories": [
     {
-      "id": 1,
-      "name": "Відбійники та амортизатори",
-      "count": 105
+        "id": 1,
+        "name": "Відбійники та амортизатори",
+        "count": 105,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11300/11211/a172475054af6ab0613bf9f056a16f05.jpg"
     },
     {
-      "id": 2,
-      "name": "Вішаки меблеві",
-      "count": 267
+        "id": 2,
+        "name": "Вішаки меблеві",
+        "count": 267,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11400/11321/39580.jpg"
     },
     {
-      "id": 3,
-      "name": "Для офісу",
-      "count": 44
+        "id": 3,
+        "name": "Для офісу",
+        "count": 44,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11800/11710/37804.jpg"
     },
     {
-      "id": 4,
-      "name": "Завіси меблеві",
-      "count": 266
+        "id": 4,
+        "name": "Завіси меблеві",
+        "count": 266,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11300/11208/e0d1c0d0f51e24c84af0e36781a73e82.jpg"
     },
     {
-      "id": 5,
-      "name": "Заглушки",
-      "count": 527
+        "id": 5,
+        "name": "Заглушки",
+        "count": 527,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11500/11408/225_012_1200x1200.jpg"
     },
     {
-      "id": 6,
-      "name": "Замки",
-      "count": 64
+        "id": 6,
+        "name": "Замки",
+        "count": 64,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11400/11388/9640.jpg"
     },
     {
-      "id": 7,
-      "name": "Засоби кріплення",
-      "count": 356
+        "id": 7,
+        "name": "Засоби кріплення",
+        "count": 356,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11400/11312/13574c4ff9f0f3fd279da9d64b3eccf7_1_.jpg"
     },
     {
-      "id": 8,
-      "name": "Клеї, герметики, очисники",
-      "count": 78
+        "id": 8,
+        "name": "Клеї, герметики, очисники",
+        "count": 78,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11700/11664/11640.jpg"
     },
     {
-      "id": 9,
-      "name": "Кутники та полицетримачі",
-      "count": 385
+        "id": 9,
+        "name": "Кутники та полицетримачі",
+        "count": 385,
+        "image": "https://vdm-shop.com.ua/upload/catalog/1100/1019/d5374b19c037786965bfd4a06c0475db.jpg"
     },
     {
-      "id": 10,
-      "name": "Направляючі та механізми висуву",
-      "count": 434
+        "id": 10,
+        "name": "Направляючі та механізми висуву",
+        "count": 434,
+        "image": "https://vdm-shop.com.ua/upload/catalog/1800/1728/08b1be63205c0fe9742118936167fc9e.jpg"
     },
     {
-      "id": 11,
-      "name": "Механізми підйому та відкидання",
-      "count": 126
+        "id": 11,
+        "name": "Механізми підйому та відкидання",
+        "count": 126,
+        "image": "https://vdm-shop.com.ua/upload/catalog/4300/4254/18f23ea98ff32c4ec91da699b7fab690.jpg"
     },
     {
-      "id": 12,
-      "name": "Опори меблеві",
-      "count": 259
+        "id": 12,
+        "name": "Опори меблеві",
+        "count": 259,
+        "image": "https://vdm-shop.com.ua/upload/catalog/300/266/813cfab89cece4022712038ede1a05b1.jpg"
     },
     {
-      "id": 13,
-      "name": "Колеса меблеві",
-      "count": 88
+        "id": 13,
+        "name": "Колеса меблеві",
+        "count": 88,
+        "image": "https://vdm-shop.com.ua/upload/catalog/12000/11902/rolik_d50_mm_rezinovyy_322_s_boltom_m10_kitay_2821_1200x1200.jpg"
     },
     {
-      "id": 14,
-      "name": "Профілі меблеві та декори",
-      "count": 15
+        "id": 14,
+        "name": "Профілі меблеві та декори",
+        "count": 15,
+        "image": "https://vdm-shop.com.ua/upload/catalog/6700/6648/f13dd4774b47a34c948271ba2a61bb3b.jpg"
     },
     {
-      "id": 15,
-      "name": "Ручки меблеві",
-      "count": 1785
+        "id": 15,
+        "name": "Ручки меблеві",
+        "count": 1785,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11300/11222/70183d71a4cf8ff9a7411f5c1b9f3bf9.jpg"
     },
     {
-      "id": 16,
-      "name": "Ручки профіль",
-      "count": 146
+        "id": 16,
+        "name": "Ручки профіль",
+        "count": 146,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11500/11494/67091.jpg"
     },
     {
-      "id": 17,
-      "name": "Вентиляційні решітки",
-      "count": 51
+        "id": 17,
+        "name": "Вентиляційні решітки",
+        "count": 51,
+        "image": "https://vdm-shop.com.ua/upload/catalog/10900/10827/40a73dbbc9814196453050003d686b91.jpg"
     },
     {
-      "id": 18,
-      "name": "Реставраційні матеріали",
-      "count": 95
+        "id": 18,
+        "name": "Реставраційні матеріали",
+        "count": 95,
+        "image": "https://vdm-shop.com.ua/upload/catalog/12100/12066/zobrazhennya_viber_2025_10_06_13_32_45_863_removebg_preview1.jpg"
     },
     {
-      "id": 19,
-      "name": "Труби та комплектуючі",
-      "count": 21
+        "id": 19,
+        "name": "Труби та комплектуючі",
+        "count": 21,
+        "image": "https://vdm-shop.com.ua/upload/catalog/5200/5128/ca9aa7e18d4dfd1248cf8d4e30a6d3a6.jpg"
     },
     {
-      "id": 20,
-      "name": "Крайка ПВХ",
-      "count": 1146
+        "id": 20,
+        "name": "Крайка ПВХ",
+        "count": 1146,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11300/11224/605dd899e7c3334a1c70ba05f90b2fc1.jpg"
     },
     {
-      "id": 21,
-      "name": "Крайка меламінова",
-      "count": 269
+        "id": 21,
+        "name": "Крайка меламінова",
+        "count": 269,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11500/11417/308.jpg"
     },
     {
-      "id": 22,
-      "name": "Профілі меблеві",
-      "count": 272
+        "id": 22,
+        "name": "Профілі меблеві",
+        "count": 272,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11500/11449/b70.jpg"
     },
     {
-      "id": 23,
-      "name": "Для шаф-купе",
-      "count": 236
+        "id": 23,
+        "name": "Для шаф-купе",
+        "count": 236,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11400/11311/36cd9a24b2f98deb2da421b7f3a7e3c1.jpg"
     },
     {
-      "id": 24,
-      "name": "Міжкімнатні",
-      "count": 71
+        "id": 24,
+        "name": "Міжкімнатні",
+        "count": 71,
+        "image": "https://vdm-shop.com.ua/upload/catalog/12200/12106/uchwyt_do_drzwi_przejciowych_loft_um_965_p2_metga.jpg"
     },
     {
-      "id": 25,
-      "name": "Наповнення шаф та гардеробів",
-      "count": 222
+        "id": 25,
+        "name": "Наповнення шаф та гардеробів",
+        "count": 222,
+        "image": "https://vdm-shop.com.ua/upload/catalog/5200/5145/c90906996c8d33ae1cf725b809daf663.jpg"
     },
     {
-      "id": 26,
-      "name": "Системи складаних та відкривних дверей",
-      "count": 40
+        "id": 26,
+        "name": "Системи складаних та відкривних дверей",
+        "count": 40,
+        "image": "https://vdm-shop.com.ua/upload/catalog/6700/6659/96aa0b25db521170b49399c58cbb79b3.jpg"
     },
     {
-      "id": 27,
-      "name": "Системи полиць та перегородок",
-      "count": 0
+        "id": 28,
+        "name": "Фасади BRW",
+        "count": 185,
+        "image": "https://vdm-shop.com.ua/upload/catalog/8300/8218/30d89c4d6ea88ec1ad11fd86822b7f32.png"
     },
     {
-      "id": 28,
-      "name": "Фасади BRW",
-      "count": 185
+        "id": 29,
+        "name": "Галерейки",
+        "count": 37,
+        "image": "https://vdm-shop.com.ua/upload/catalog/5100/5080/0072fa9fe86258c6163f8e197dbb0577.jpg"
     },
     {
-      "id": 29,
-      "name": "Галерейки",
-      "count": 37
+        "id": 30,
+        "name": "Дерев'яні решітки",
+        "count": 4,
+        "image": "https://vdm-shop.com.ua/upload/catalog/9900/9892/95671_2.jpg"
     },
     {
-      "id": 30,
-      "name": "Дерев'яні решітки",
-      "count": 4
+        "id": 31,
+        "name": "Перфорація",
+        "count": 1,
+        "image": "https://vdm-shop.com.ua/upload/catalog/10000/9906/5225cea0980d4df8591d486867e5cc6f.JPG"
     },
     {
-      "id": 31,
-      "name": "Перфорація",
-      "count": 1
+        "id": 32,
+        "name": "Смітники",
+        "count": 76,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11700/11675/02582g.jpg"
     },
     {
-      "id": 32,
-      "name": "Смітники",
-      "count": 76
+        "id": 33,
+        "name": "Сушки для посуду",
+        "count": 159,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11300/11270/807e89f2cc15d0d4fad3e3e2982cef82.jpg"
     },
     {
-      "id": 33,
-      "name": "Сушки для посуду",
-      "count": 159
+        "id": 34,
+        "name": "Вклади для шухляд",
+        "count": 100,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11700/11640/6715df4c5683ebd741e17a3240900fac.jpg"
     },
     {
-      "id": 34,
-      "name": "Вклади для шухляд",
-      "count": 100
+        "id": 35,
+        "name": "Релінг, коші та комплектуючі",
+        "count": 110,
+        "image": "https://vdm-shop.com.ua/upload/catalog/12200/12197/0063g.jpg"
     },
     {
-      "id": 35,
-      "name": "Релінг, коші та комплектуючі",
-      "count": 110
+        "id": 36,
+        "name": "Труба Ø50 та барні аксесуари",
+        "count": 51,
+        "image": "https://vdm-shop.com.ua/upload/catalog/7600/7537/e53790e52e0370a839cfc2ea109af078.jpg"
     },
     {
-      "id": 36,
-      "name": "Труба Ø50 та барні аксесуари",
-      "count": 51
+        "id": 37,
+        "name": "Карго, коші, обертові полки, шухляди",
+        "count": 246,
+        "image": "https://vdm-shop.com.ua/upload/catalog/7700/7607/45d110efc036ed90177e2f09c2c46421.jpg"
     },
     {
-      "id": 37,
-      "name": "Карго, коші, обертові полки, шухляди",
-      "count": 246
+        "id": 38,
+        "name": "Плінтус",
+        "count": 157,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11300/11263/9764d47ebe078cc659329a9798f00fd2.jpg"
     },
     {
-      "id": 38,
-      "name": "Плінтус",
-      "count": 157
+        "id": 39,
+        "name": "Кути та закінчення до плінтуса",
+        "count": 248,
+        "image": "https://vdm-shop.com.ua/upload/catalog/10200/10123/5784b882fee70051187bf523d7d63e8b.JPG"
     },
     {
-      "id": 39,
-      "name": "Кути та закінчення до плінтуса",
-      "count": 248
+        "id": 40,
+        "name": "Витяжки та інша побутова техніка",
+        "count": 12,
+        "image": "https://vdm-shop.com.ua/upload/catalog/8200/8160/63113bf833e17b7ce694e7cf6f499459.jpg"
     },
     {
-      "id": 40,
-      "name": "Витяжки та інша побутова техніка",
-      "count": 12
+        "id": 41,
+        "name": "Цоколь",
+        "count": 21,
+        "image": "https://vdm-shop.com.ua/upload/catalog/8200/8173/8954f55ff544e57e17ab8a8319597220.jpg"
     },
     {
-      "id": 41,
-      "name": "Цоколь",
-      "count": 21
+        "id": 42,
+        "name": "Закінчення та з’єднання стільниць",
+        "count": 24,
+        "image": "https://vdm-shop.com.ua/upload/catalog/8200/8194/22bb337dde33d62654944609e2efe125.jpg"
     },
     {
-      "id": 42,
-      "name": "Закінчення та з'єднання стільниць",
-      "count": 24
+        "id": 43,
+        "name": "Аксесуари для кімнати, кухні та ванної кімнати",
+        "count": 63,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11400/11325/0273874001713908464.jpg"
     },
     {
-      "id": 43,
-      "name": "Аксесуари для кімнати, кухні та ванної кімнати",
-      "count": 63
+        "id": 44,
+        "name": "Профілі для LED",
+        "count": 92,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11300/11268/c0f7b6d1bacea61f784351142ac2ff0a.jpg"
     },
     {
-      "id": 44,
-      "name": "Профілі для LED",
-      "count": 92
+        "id": 45,
+        "name": "LED стрічка",
+        "count": 61,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11400/11303/0ab07dc3d76190415c600deb0e9c3385.jpg"
     },
     {
-      "id": 45,
-      "name": "LED стрічка",
-      "count": 61
+        "id": 46,
+        "name": "Блоки живлення та контролери",
+        "count": 58,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11300/11207/883ed7cc19cff206b64346b08579437b.jpg"
     },
     {
-      "id": 46,
-      "name": "Блоки живлення та контролери",
-      "count": 58
+        "id": 47,
+        "name": "Оправи та світильники",
+        "count": 74,
+        "image": "https://vdm-shop.com.ua/upload/catalog/9700/9635/1cee15fa96b001f6b7c4cd28a46ed871.jpg"
     },
     {
-      "id": 47,
-      "name": "Оправи та світильники",
-      "count": 74
+        "id": 48,
+        "name": "Лампи",
+        "count": 55,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11500/11458/50672780.jpg"
     },
     {
-      "id": 48,
-      "name": "Лампи",
-      "count": 55
+        "id": 49,
+        "name": "Електромонтажне обладнання",
+        "count": 60,
+        "image": "https://vdm-shop.com.ua/upload/catalog/9900/9866/441741a4b7318fc84291ef2043fd20dd.png"
     },
     {
-      "id": 49,
-      "name": "Електромонтажне обладнання",
-      "count": 60
+        "id": 50,
+        "name": "Розетки врізні",
+        "count": 33,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11600/11533/502300.jpg"
     },
     {
-      "id": 50,
-      "name": "Розетки врізні",
-      "count": 33
+        "id": 51,
+        "name": "Ручний",
+        "count": 119,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11600/11599/intertool_ht_0500_photo_1.jpg"
     },
     {
-      "id": 51,
-      "name": "Ручний",
-      "count": 119
+        "id": 52,
+        "name": "Фрези і сверла",
+        "count": 114,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11500/11440/freza_pazovaya_pryamaya_d_14_mm_d_8_mm_pobedit_p_1003_08_14.jpg"
     },
     {
-      "id": 52,
-      "name": "Фрези і сверла",
-      "count": 114
+        "id": 53,
+        "name": "Розхідні матеріали",
+        "count": 112,
+        "image": "https://vdm-shop.com.ua/upload/catalog/1900/1853/r7_750ml_jabko_new.jpg"
     },
     {
-      "id": 53,
-      "name": "Розхідні матеріали",
-      "count": 112
+        "id": 54,
+        "name": "Пакувальні матеріали",
+        "count": 9,
+        "image": "https://vdm-shop.com.ua/upload/catalog/9500/9433/a4f1966f0a4b0a57b55c0a576e693c22.jpg"
     },
     {
-      "id": 54,
-      "name": "Пакувальні матеріали",
-      "count": 9
+        "id": 55,
+        "name": "Для дверей",
+        "count": 192,
+        "image": "https://vdm-shop.com.ua/upload/catalog/8900/8857/ee82e70577f408e92f7617a9862e2de7.jpg"
     },
     {
-      "id": 55,
-      "name": "Для дверей",
-      "count": 192
+        "id": 56,
+        "name": "Для столів",
+        "count": 43,
+        "image": "https://vdm-shop.com.ua/upload/catalog/9000/8986/81b0436d1e08eced36ca90b03dd2681e.jpg"
     },
     {
-      "id": 56,
-      "name": "Для столів",
-      "count": 43
+        "id": 57,
+        "name": "Для вікон",
+        "count": 7,
+        "image": "https://vdm-shop.com.ua/upload/catalog/1000/919/3013339046fcd92a3d8ce581308587ed.jpg"
     },
     {
-      "id": 57,
-      "name": "Для вікон",
-      "count": 7
+        "id": 58,
+        "name": "Системи поручнів",
+        "count": 18,
+        "image": "https://vdm-shop.com.ua/upload/catalog/9100/9007/f8f0daac31d665e0efc54fc1d55bbe37.jpg"
     },
     {
-      "id": 58,
-      "name": "Системи поручнів",
-      "count": 18
+        "id": 59,
+        "name": "Труба Ø25 та з'єднання",
+        "count": 67,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11700/11642/image_2024_11_13t12_20_22_680z.jpg"
     },
     {
-      "id": 59,
-      "name": "Труба Ø25 та з'єднання",
-      "count": 67
+        "id": 60,
+        "name": "Торговий профіль",
+        "count": 7,
+        "image": "https://vdm-shop.com.ua/upload/catalog/8800/8776/324ef21876327151733cee39ef58f6fd.jpg"
     },
     {
-      "id": 60,
-      "name": "Торговий профіль",
-      "count": 7
+        "id": 61,
+        "name": "Системи перегородок та полиць",
+        "count": 58,
+        "image": "https://vdm-shop.com.ua/upload/catalog/9100/9050/9a6007cf2d21e0e0482536a38251a441.jpg"
     },
     {
-      "id": 61,
-      "name": "Системи перегородок та полиць",
-      "count": 58
+        "id": 62,
+        "name": "Крісла",
+        "count": 156,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11300/11248/b743a6e58d6fd836524f2ee70b51d0ef.jpg"
     },
     {
-      "id": 62,
-      "name": "Крісла",
-      "count": 156
+        "id": 63,
+        "name": "Столи",
+        "count": 46,
+        "image": "https://vdm-shop.com.ua/upload/catalog/8500/8491/90040.jpg"
     },
     {
-      "id": 63,
-      "name": "Столи",
-      "count": 46
+        "id": 64,
+        "name": "Вішалки",
+        "count": 13,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11900/11811/4010_chernaia_500x500.jpg"
     },
     {
-      "id": 64,
-      "name": "Вішалки",
-      "count": 13
+        "id": 65,
+        "name": "Полиці для взуття​",
+        "count": 6,
+        "image": "https://vdm-shop.com.ua/upload/catalog/11400/11374/9000000.jpg"
     },
     {
-      "id": 65,
-      "name": "Полиці для взуття​",
-      "count": 6
+        "id": 66,
+        "name": "Комплектуючі для крісел",
+        "count": 104,
+        "image": "https://vdm-shop.com.ua/upload/catalog/10800/10795/3a7a01f69defd75d49c349731b9ba767.JPG"
     },
     {
-      "id": 66,
-      "name": "Комплектуючі для крісел",
-      "count": 104
+        "id": 67,
+        "name": "Механізми підйому ліжок",
+        "count": 14,
+        "image": "https://vdm-shop.com.ua/upload/catalog/8700/8651/3e6252d2331b3d5520771de0f409947e.jpg"
     },
     {
-      "id": 67,
-      "name": "Механізми підйому ліжок",
-      "count": 14
+        "id": 68,
+        "name": "Ламелі",
+        "count": 54,
+        "image": "https://vdm-shop.com.ua/upload/catalog/8600/8590/6d3eec85520dc95cef441fb56ff01095.jpg"
     },
     {
-      "id": 68,
-      "name": "Ламелі",
-      "count": 54
-    },
-    {
-      "id": 69,
-      "name": "Матраци",
-      "count": 33
+        "id": 69,
+        "name": "Матраци",
+        "count": 33,
+        "image": "https://vdm-shop.com.ua/upload/catalog/8700/8606/b420f1621ff4c59c3959ed8919744e62.jpg"
     }
   ]
 }
