@@ -28,30 +28,30 @@ function Index() {
             <SwiperSlide>
               <div className="hero-wrap hero-wrap1">
                 <div className="hero-content">
-                  <h5>- ESSENSTIAL ITEMS -</h5>
-                  <h1>Beauty Inspired <br /> by Real Life</h1>
-                  <p className="my-3">Made using clean, non-toxic ingredients, our products are designed for everyone</p>
-                  <a href="#" className='btn hero-btn mt-3'>Shop Now</a>
+                  <h5>- МАКСИМАЛЬНИЙ КОМФОРТ -</h5>
+                  <h1>Відчуйте себе <br /> як вдома</h1>
+                  <p className="my-3">Ідеальне поєднання стилю та домашнього затишку в нашій новій колекції м'яких меблів.</p>
+                  <a href="#" className='btn hero-btn mt-3'>До каталогу</a>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="hero-wrap hero-wrap2">
+              <div className="hero-wrap hero-wrap1">
                 <div className="hero-content">
-                  <h5>- NEW COLLECTION -</h5>
-                  <h1>Get The Perfectly Hydrated Skin</h1>
-                  <p className="my-3">Made using clean, non-toxic ingredients, our products are designed for everyone</p>
-                  <a href="#" className='btn hero-btn mt-3'>Shop Now</a>
+                  <h5>- СУЧАСНЕ ЖИТТЯ -</h5>
+                  <h1>Мінімалізм та <br /> Функціональність</h1>
+                  <p className="my-3">Чіткі лінії та розумний дизайн, що перетворюють звичайний простір на сучасний інтер'єр.</p>
+                  <a href="#" className='btn hero-btn mt-3'>До каталогу</a>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="hero-wrap hero-wrap3">
                 <div className="hero-content">
-                  <h5>- GET THE GLOW -</h5>
-                  <h1>Be Your Kind <br /> of Beauty</h1>
-                  <p className="my-3">Made using clean, non-toxic ingredients, our products are designed for everyone</p>
-                  <a href="#" className='btn hero-btn mt-3'>Shop Now</a>
+                  <h5>- ЧАС ДЛЯ СНІВ -</h5>
+                  <h1>Спіть краще, <br /> живіть яскравіше</h1>
+                  <p className="my-3">Відкрийте для себе ергономічні ліжка та матраци для відпочинку, на який ви заслуговуєте.</p>
+                  <a href="#" className='btn hero-btn mt-3'>До каталогу</a>
                 </div>
               </div>
             </SwiperSlide>
@@ -62,8 +62,8 @@ function Index() {
           <div className="container position-relative">
             <div className="row">
               <div className="section-title mb-5 product-title text-center ">
-                <h2 className="fw-semibold fs-1">Our Featured Products</h2>
-                <p className="text-muted">Get the skin you want to feel</p>
+                <h2 className="fw-semibold fs-1">Популярні товари</h2>
+                <p className="text-muted">Отримайте комфорт, про який мрієте</p>
               </div>
             </div>
             <Swiper
@@ -88,10 +88,10 @@ function Index() {
                         <img src={product.image} alt="" className='img-fluid' />
                         <img src={product.secondImage} alt="" className='img-fluid' />
                         <div className="product-icons gap-3">
-                          <div className="product-icon" title="Add to Wishlist">
+                          <div className="product-icon" title="Додати до списку бажань">
                             <i className="bi bi-heart fs-5"></i>
                           </div>
-                          <div className="product-icon" title="Add to Cart">
+                          <div className="product-icon" title="Додати в кошик">
                             <i className="bi bi-cart3 fs-5"></i>
                           </div>
                           <span className={`tag badge text-white ${product.tag === 'New' ? 'bg-danger' : 'bg-success'}`}>

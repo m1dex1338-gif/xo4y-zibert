@@ -17,7 +17,7 @@ function Nav() {
          data-bs-target="#navbarSupportedContent"
          aria-bs-controls="navbarNav"
          aria-expanded="false"
-         aria-label="Toggle navigation"
+         aria-label="Перемкнути навігацію"
          >
          <span className="navbar-toggler-icon"></span>
          </button>
@@ -25,7 +25,7 @@ function Nav() {
          {/* Mobile Logo */}
 
          <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex'>
-            <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>XO4Y ZIBERT</h2>
+            <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
          </Link>
 
          {/* Mobile Icon */}
@@ -63,29 +63,29 @@ function Nav() {
 
            <ul className="navbar-nav nav-menu align-items-center gap-4">
             <li className="nav-item">
-              <Link to="/" className='nav-link'>Home</Link>
+              <Link to="/" className='nav-link'>Головна</Link>
             </li>
              <li className="nav-item">
-              <Link to="/about" className='nav-link'>About</Link>
+              <Link to="/about" className='nav-link'>Про нас</Link>
             </li>
              <li className="nav-item">
-              <Link to="/shop" className='nav-link'>Shop</Link>
+              <Link to="/shop" className='nav-link'>Каталог</Link>
             </li>
              <li className="nav-item">
-              <Link to="/store" className='nav-link'>Store</Link>
+              <Link to="/store" className='nav-link'>Магазин</Link>
             </li>
              <li className="nav-item">
-              <Link to="/blog" className='nav-link'>Blog</Link>
+              <Link to="/blog" className='nav-link'>Блог</Link>
             </li>
              <li className="nav-item">
-              <Link to="/contact" className='nav-link'>Contact</Link>
+              <Link to="/contact" className='nav-link'>Контакти</Link>
             </li>
            </ul>
 
            {/* Center logo */}
            
            <a href="#" className='navbar-brand order-0 d-none d-lg-flex'>
-            <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>XO4Y ZIBERT</h2>
+            <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
            </a>
            
            {/* Right Icons */}
@@ -125,30 +125,30 @@ function Nav() {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content p-4">
           <div className="modal-header border-0">
-            <h5 className="modal-title fw-bold" id='signupModalLabel'>Sign Up</h5>
+            <h5 className="modal-title fw-bold" id='signupModalLabel'>Реєстрація</h5>
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div className="modal-body">
             <form>
               <div className="mb-3">
-                <label className='form-label'>Name</label>
-                <input type="text" className='form-control' placeholder='Enter Your Name' required />
+                <label className='form-label'>Ім'я</label>
+                <input type="text" className='form-control' placeholder='Введіть ваше імʼя' required />
               </div>
               <div className="mb-3">
-                <label className='form-label'>Email Address</label>
-                <input type="email" className='form-control' placeholder='Enter Email Address' required />
+                <label className='form-label'>Електронна адреса</label>
+                <input type="email" className='form-control' placeholder='Введіть електронну адресу' required />
               </div>
               <div className="mb-3">
-                <label className='form-label'>Password</label>
-                <input type="password" className='form-control' placeholder='Enter Password' required />
+                <label className='form-label'>Пароль</label>
+                <input type="password" className='form-control' placeholder='Введіть пароль' required />
               </div>
               <p className="text-muted">
-                By signing up, you agree to our <a href="#" className='text-success text-decoration-none'>Terms</a> & <a href="#" className='text-success text-decoration-none'>Privacy Policy</a>
+                Реєструючись, ви погоджуєтесь з нашими <a href="#" className='text-success text-decoration-none'>Умовами</a> та <a href="#" className='text-success text-decoration-none'>Політикою конфіденційності</a>
               </p>
-              <button type='button' className='btn btn-dark w-100'>Sign Up</button>
+              <button type='button' className='btn btn-dark w-100'>Зареєструватися</button>
             </form>
             <div className="text-center mt-3">
-              <p>Already have an account? <a href="#" className='text-success fw-bold'>Sign In </a></p>
+              <p>Вже маєте акаунт? <a href="#" className='text-success fw-bold'>Увійти</a></p>
             </div>
           </div>
         </div>
