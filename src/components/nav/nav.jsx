@@ -65,19 +65,22 @@ function Nav() {
             <li className="nav-item">
               <Link to="/" className='nav-link'>Home</Link>
             </li>
-             <li className="nav-item">
+            <li className="nav-item">
               <Link to="/about" className='nav-link'>About</Link>
             </li>
-             <li className="nav-item">
+            <li className="nav-item">
               <Link to="/shop" className='nav-link'>Shop</Link>
             </li>
-             <li className="nav-item">
+            <li className="nav-item">
+              <Link to="/categories" className='nav-link'>Categories</Link>
+            </li>
+            <li className="nav-item">
               <Link to="/store" className='nav-link'>Store</Link>
             </li>
-             <li className="nav-item">
+            <li className="nav-item">
               <Link to="/blog" className='nav-link'>Blog</Link>
             </li>
-             <li className="nav-item">
+            <li className="nav-item">
               <Link to="/contact" className='nav-link'>Contact</Link>
             </li>
            </ul>
