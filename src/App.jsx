@@ -5,6 +5,8 @@ import Index from './components/pages/Index'
 import ProductDetails from './components/pages/ProductDetails'
 import Categories from './components/pages/Categories'
 import CategoryPage from './components/pages/CategoryPage'
+import Wishlist from './components/pages/Wishlist'
+import Cart from './components/pages/Cart'  
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
         <Route path='/' element={<Index/>}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>
         <Route path='/wishlist' element={<Wishlist/>}/>
+        <Route path='/cart' element={<Cart/>}/>
         <Route path='/categories' element={<Categories/>}/>
         <Route path='/category/:id' element={<CategoryPage/>}/>
       </Routes>

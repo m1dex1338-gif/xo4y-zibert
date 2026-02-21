@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import React, { useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules'
@@ -8,7 +8,6 @@ import'swiper/css/effect-fade'
 // Data
 
 import Products from './../../Product.json'
-import { Link } from 'react-router-dom'
 import ChairAnimation from '../ChairAnimation'
 import { Link, useNavigate } from 'react-router-dom'
 

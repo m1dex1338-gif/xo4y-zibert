@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function Nav() {
   
-  const [cartCount, setCartCount] = useState();
-  const [wishlistCount, setWishlistCount] = useState();
+  const [cartCount, setCartCount] = useState(0);
+  const [wishlistCount, setWishlistCount] = useState(0);
   
   const updateCounts = () => {
 
@@ -17,7 +17,7 @@ function Nav() {
   };
 
   useEffect(() => {
-    updateCounts(0);
+    updateCounts();
 
     const handleCartUpdate =() => updateCounts();
     const handleWishlistUpdate =() => updateCounts();
@@ -81,16 +81,24 @@ function Nav() {
             </a>
           </li>
           <li className="nav-item position-relative">
-            <a href="#" >
+            <Link to="/wishlist" >
               <i className="bi bi-heart fs-5 text-dark"></i>
-              <span className="position-absolute top-0 start-100 translate-middle cart-qount rounded-pill">0</span>       
-            </a>
+              {wishlistCount > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle cart-count rounded-pill bg-danger text-white px-2">
+                  {wishlistCount}
+                </span>
+              )}
+            </Link>
           </li>
           <li className="nav-item position-relative">
-            <a href="#" >
+            <Link to="/cart" >
               <i className="bi bi-bag fs-5 text-dark"></i>
-              <span className="position-absolute top-0 start-100 translate-middle cart-qount rounded-pill">0</span>       
-            </a>
+              {cartCount > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle cart-count rounded-pill bg-danger text-white px-2">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
           </li>
          </ul>
 
@@ -138,16 +146,24 @@ function Nav() {
              </a>
             </li>
             <li className="nav-item position-relative">
-             <a href="#" >
+              <Link to='/wishlist'>
               <i className="bi bi-heart fs-5 text-dark"></i>
-              <span className="position-absolute top-0 start-100 translate-middle cart-qount rounded-pill">0</span>       
-             </a>
+              {wishlistCount > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle cart-count rounded-pill bg-danger text-white px-2">
+                  {wishlistCount}
+                </span>
+              )}
+             </Link>
             </li>
             <li className="nav-item position-relative">
-             <a href="#" >
+              <Link to='/cart'>
               <i className="bi bi-bag fs-5 text-dark"></i>
-              <span className="position-absolute top-0 start-100 translate-middle cart-qount rounded-pill">0</span>       
-             </a>
+              {cartCount > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle cart-count rounded-pill bg-danger text-white px-2">
+                  {cartCount}
+                </span>
+              )}
+             </Link>
             </li>
            </ul>
 
