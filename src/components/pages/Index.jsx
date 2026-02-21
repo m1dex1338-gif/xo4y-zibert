@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules'
@@ -10,8 +10,43 @@ import'swiper/css/effect-fade'
 import Products from './../../Product.json'
 import { Link } from 'react-router-dom'
 import ChairAnimation from '../ChairAnimation'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 function Index() {
+
+  const[filterSortOption, setFilterSortOption] = useState('all');
+
+  const navigate = useNavigate();
+
+  const addTowishlist = (product) => {
+    const existing = JSON.parse(localStorage.getItem('wishlist')) || [];
+    if (!existing.some(p => p.id === product.id)) {
+      const updated = [...existing, product];
+      localStorage.setItem('wishlist', JSON.stringify(updated));
+      window.dispatchEvent(new Event('wishlistUpdated'));
+      toast.success(`${product.name} Товар додано до списку бажань!`);
+    } else {
+      toast.info(`${product.name} вже в списку бажань!`);
+    }   
+  }
+
+  const addToCart = (product) => {
+    const existing = JSON.parse(localStorage.getItem('cart')) || [];
+    const alreadyInCart = existing.find(p => p.id === product.id);
+    if (!alreadyInCart) {
+      const updatedProduct = {...product, quantity: 1};
+      const updatedCart = [...existing, updatedProduct];
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      window.dispatchEvent(new Event('cartUpdated'));
+      toast.success(`${product.name} Товар додано до кошика!`);
+    } else {
+      toast.info(`${product.name} вже в кошику!`);
+    }   
+  }
+
   return (
     <>
         {/*  Hero  */}
@@ -91,10 +126,10 @@ function Index() {
                         <img src={product.image} alt="" className='img-fluid' />
                         <img src={product.secondImage} alt="" className='img-fluid' />
                         <div className="product-icons gap-3">
-                          <div className="product-icon" title="Додати до списку бажань">
+                          <div className="product-icon" title="Додати до списку бажань" onclick={() => addToWishlist(product)}>
                             <i className="bi bi-heart fs-5"></i>
                           </div>
-                          <div className="product-icon" title="Додати в кошик">
+                          <div className="product-icon" title="Додати в кошик" onclick={() => addToCart(product)}>
                             <i className="bi bi-cart3 fs-5"></i>
                           </div>
                           <span className={`tag badge text-white ${product.tag === 'New' ? 'bg-danger' : 'bg-success'}`}>

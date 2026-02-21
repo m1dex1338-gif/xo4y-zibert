@@ -15,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Index/>}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>
+        <Route path='/wishlist' element={<Wishlist/>}/>
         <Route path='/categories' element={<Categories/>}/>
         <Route path='/category/:id' element={<CategoryPage/>}/>
       </Routes>
