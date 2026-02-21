@@ -26,7 +26,8 @@
 
 html,
 body{
-    overflow-x: hidden;
+    overflow-x: clip; /* clip is safer for sticky than hidden */
+    width: 100%;
 }
 
 .nav-wrapper{

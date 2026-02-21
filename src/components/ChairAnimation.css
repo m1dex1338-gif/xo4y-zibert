@@ -1,0 +1,74 @@
+.chair-animation-container {
+    height: 300vh; /* Scroll track length needed for comfortable scrubbing through 80 frames */
+    position: relative;
+    background-color: #f9f9f9;
+}
+
+.chair-sticky-wrapper {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #ffffff; /* Explicit white background */
+    z-index: 1000; /* High z-index to stay on top */
+}
+
+.animation-content {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.animation-text-overlay {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.animation-text-overlay h2 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 300;
+}
+
+.animation-text-overlay p {
+    font-size: 1.2rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .animation-text-overlay h2 {
+        font-size: 2rem;
+    }
+}

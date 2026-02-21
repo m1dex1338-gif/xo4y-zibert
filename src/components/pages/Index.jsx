@@ -9,6 +9,7 @@ import'swiper/css/effect-fade'
 
 import Products from './../../Product.json'
 import { Link } from 'react-router-dom'
+import ChairAnimation from '../ChairAnimation'
 
 function Index() {
   return (
@@ -57,6 +58,8 @@ function Index() {
             </SwiperSlide>
           </Swiper>  
         </div>
+        {/* Chair Animation */}
+        <ChairAnimation />
         {/* Products */}
         <div className="product-container py-5 my-5">
           <div className="container position-relative">
