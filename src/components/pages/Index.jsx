@@ -20,7 +20,7 @@ function Index() {
 
   const navigate = useNavigate();
 
-  const addTowishlist = (product) => {
+  const addToWishlist = (product) => {
     const existing = JSON.parse(localStorage.getItem('wishlist')) || [];
     if (!existing.some(p => p.id === product.id)) {
       const updated = [...existing, product];
@@ -125,10 +125,10 @@ function Index() {
                         <img src={product.image} alt="" className='img-fluid' />
                         <img src={product.secondImage} alt="" className='img-fluid' />
                         <div className="product-icons gap-3">
-                          <div className="product-icon" title="Додати до списку бажань" onclick={() => addToWishlist(product)}>
+                          <div className="product-icon" title="Додати до списку бажань" onClick={(e) =>  {e.preventDefault(); e.stopPropagation(); addToWishlist(product);}}>
                             <i className="bi bi-heart fs-5"></i>
                           </div>
-                          <div className="product-icon" title="Додати в кошик" onclick={() => addToCart(product)}>
+                          <div className="product-icon" title="Додати в кошик" onClick={(e) => {e.preventDefault(); e.stopPropagation(); addToCart(product);}}>
                             <i className="bi bi-cart3 fs-5"></i>
                           </div>
                           <span className={`tag badge text-white ${product.tag === 'New' ? 'bg-danger' : 'bg-success'}`}>
@@ -147,6 +147,16 @@ function Index() {
             </Swiper>
           </div>
         </div>
+
+        <ToastContainer
+        autoClose={2000}
+        position="top-right"
+        hideProgressBar={false}
+        closeOnClick={true}
+        pauseOnHover={true}
+        draggable={true}
+        progress={undefined}
+        />
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -107,6 +107,15 @@ function Cart() {
           </div>
         )}
       </div>
+      <ToastContainer
+      autoClose={2000}
+      position="top-right"
+      hideProgressBar={false}
+      closeOnClick={true}
+      pauseOnHover={true}
+      draggable={true}
+      progress={undefined}
+      />
     </>
   );
 }
