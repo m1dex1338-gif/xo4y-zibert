@@ -40,6 +40,21 @@ function Nav() {
   }, []);
 
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    document.body.style.overflow = 'auto';
+  };
 
   return (
     <>
@@ -50,48 +65,35 @@ function Nav() {
 
         {/* Toogle Button */}
         
-         <button className="navbar-toggler"
-         type="button"
-         data-bs-toggle="collapse"
-         data-bs-target="#navbarSupportedContent"
-         aria-bs-controls="navbarNav"
-         aria-expanded="false"
-         aria-label="Перемкнути навігацію"
+         <button 
+           className={`navbar-toggler border-0 shadow-none ${isOpen ? 'active' : ''}`}
+           type="button"
+           onClick={toggleMenu}
+           aria-label="Toggle navigation"
          >
-         <span className="navbar-toggler-icon"></span>
+           <div className="hamburger-icon">
+             <span></span>
+             <span></span>
+             <span></span>
+           </div>
          </button>
 
          {/* Mobile Logo */}
 
-         <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex'>
+         <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex' onClick={closeMenu}>
             <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
          </Link>
 
          {/* Mobile Icon */}
 
-         <ul className="d-lg-none d-flex align-items-center gap-3">
+         <ul className="d-lg-none d-flex align-items-center gap-3 m-0 p-0">
           <li className="nav-item">
             <a href="#">
               <i className="bi bi-search fs-5 text-dark"></i>       
             </a>
           </li>
-          <li className="nav-item">
-            <a href="#" data-bs-toggle='modal' data-bs-target='#signupModal'>
-              <i className="bi bi-person fs-5 text-dark"></i>       
-            </a>
-          </li>
           <li className="nav-item position-relative">
-            <Link to="/wishlist" >
-              <i className="bi bi-heart fs-5 text-dark"></i>
-              {wishlistCount > 0 && (
-                <span className="position-absolute top-0 start-100 translate-middle cart-count rounded-pill bg-danger text-white px-2">
-                  {wishlistCount}
-                </span>
-              )}
-            </Link>
-          </li>
-          <li className="nav-item position-relative">
-            <Link to="/cart" >
+            <Link to="/cart" onClick={closeMenu}>
               <i className="bi bi-bag fs-5 text-dark"></i>
               {cartCount > 0 && (
                 <span className="position-absolute top-0 start-100 translate-middle cart-count rounded-pill bg-danger text-white px-2">
@@ -104,25 +106,31 @@ function Nav() {
 
          {/* Main Nav */}
 
-         <div className="collapse navbar-collapse justify-content-between" id='navbarNav'>
+         <div className={`collapse navbar-collapse justify-content-between ${isOpen ? 'show custom-mobile-menu' : ''}`} id='navbarNav'>
+           
+           {/* Mobile Menu Header (Visible only when open on mobile) */}
+           <div className="d-lg-none w-100 d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+             <h4 className="fw-bold m-0">Меню</h4>
+             <button className="btn-close" onClick={closeMenu}></button>
+           </div>
 
            {/* left Nav link */}
 
            <ul className="navbar-nav nav-menu align-items-center gap-4">
             <li className="nav-item">
-              <Link to="/" className='nav-link'>Головна</Link>
+              <Link to="/" className='nav-link' onClick={closeMenu}>Головна</Link>
             </li>
              <li className="nav-item">
-              <Link to="/about" className='nav-link'>Про нас</Link>
+              <Link to="/about" className='nav-link' onClick={closeMenu}>Про нас</Link>
             </li>
              <li className="nav-item">
-              <Link to="/categories" className='nav-link'>Каталог</Link>
+              <Link to="/categories" className='nav-link' onClick={closeMenu}>Каталог</Link>
             </li>
              <li className="nav-item">
-              <Link to="/blog" className='nav-link'>Блог</Link>
+              <Link to="/blog" className='nav-link' onClick={closeMenu}>Блог</Link>
             </li>
              <li className="nav-item">
-              <Link to="/contact" className='nav-link'>Контакти</Link>
+              <Link to="/contact" className='nav-link' onClick={closeMenu}>Контакти</Link>
             </li>
            </ul>
 
@@ -169,6 +177,9 @@ function Nav() {
 
          </div>
       </nav>
+
+      {/* Mobile Backdrop */}
+      {isOpen && <div className="menu-backdrop" onClick={closeMenu}></div>}
      </div>
 
      {/* Sign-up Modal  */}

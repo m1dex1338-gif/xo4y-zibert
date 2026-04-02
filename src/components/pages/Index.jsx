@@ -109,10 +109,10 @@ function Index() {
               modules={Navigation}
               navigation={{ nextEl: ".product-swiper-next", prevEl: ".product-swiper-prev" }}
               breakpoints={{
-                1399: {slidesPerView:4},
-                1199: {slidesPerView:3},
-                991: {slidesPerView:2},
-                767: {slidesPerView:1.5},
+                1367: {slidesPerView:4},
+                1070: {slidesPerView:3},
+                769: {slidesPerView:2},
+                379: {slidesPerView:1.5},
                 0: {slidesPerView:1},
               }}   
               className='mt-4 swiper position-relative' 

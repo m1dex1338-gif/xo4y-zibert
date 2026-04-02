@@ -68,76 +68,90 @@ function CategoryPage() {
   if (error) return <div style={{ padding: 30, color: 'red' }}>Помилка: {error}</div>
 
   return (
-    <div style={{ maxWidth: 1200, margin: '0 auto', padding: 20 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+    <div className="container-fluid category-page py-4">
+      <div className="category-header d-flex justify-content-between align-items-center mb-4 px-3">
         <div>
-          <h2 style={{ margin: 0 }}>{categoryName || 'Категорія'}</h2>
-          <p style={{ margin: 0, color: '#666' }}>{products.length} товар(ів)</p>
+          <h2 className="fw-bold mb-0">{categoryName || 'Категорія'}</h2>
+          <p className="text-muted mb-0">{products.length} товар(ів)</p>
         </div>
-        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-          <button onClick={() => setShowFilters(s => !s)} style={{ padding: '8px 12px', borderRadius: 6, border: '1px solid #ddd', background: '#fff' }}>Фільтри</button>
+        <div className="d-flex gap-2">
+          <button onClick={() => setShowFilters(s => !s)} className="btn btn-outline-dark filter-toggle-btn">
+            <i className="bi bi-filter me-1"></i> Фільтри
+          </button>
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: 20 }}>
+      <div className="category-layout">
         {/* Left: Filters */}
         {showFilters && (
-          <div style={{ width: 260, border: '1px solid #eee', borderRadius: 8, padding: 16, background: '#fff', height: 'fit-content' }}>
-            <div style={{ marginBottom: 12 }}>
-              <label style={{ display: 'block', marginBottom: 6 }}>Пошук</label>
+          <div className="category-sidebar shadow-sm">
+            <div className="filter-group mb-3">
+              <label className="fw-semibold mb-2">Пошук</label>
               <input
-                placeholder="Пошук за назвою або артикулом"
+                className="form-control"
+                placeholder="Пошук за назвою..."
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                style={{ padding: '8px 12px', width: '100%', borderRadius: 6, border: '1px solid #ddd' }}
               />
             </div>
 
-            <div style={{ marginBottom: 12 }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <input type="checkbox" checked={inStockOnly} onChange={e => setInStockOnly(e.target.checked)} />
+            <div className="filter-group mb-3">
+              <label className="form-check-label d-flex align-items-center gap-2">
+                <input className="form-check-input" type="checkbox" checked={inStockOnly} onChange={e => setInStockOnly(e.target.checked)} />
                 <span>В наявності</span>
               </label>
             </div>
 
-            <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
-              <div style={{ flex: 1 }}>
-                <label style={{ display: 'block', marginBottom: 6 }}>Ціна від</label>
-                <input type="number" placeholder="min" value={minPrice} onChange={e => setMinPrice(e.target.value)} style={{ width: '100%', padding: 6, borderRadius: 6, border: '1px solid #ddd' }} />
-              </div>
-              <div style={{ flex: 1 }}>
-                <label style={{ display: 'block', marginBottom: 6 }}>до</label>
-                <input type="number" placeholder="max" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} style={{ width: '100%', padding: 6, borderRadius: 6, border: '1px solid #ddd' }} />
+            <div className="filter-group mb-4">
+              <label className="fw-semibold mb-2">Ціна (₴)</label>
+              <div className="d-flex gap-2 align-items-center">
+                <input type="number" placeholder="Min" className="form-control" value={minPrice} onChange={e => setMinPrice(e.target.value)} />
+                <span>-</span>
+                <input type="number" placeholder="Max" className="form-control" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} />
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: 8 }}>
-              <button onClick={() => { setQuery(''); setInStockOnly(false); setMinPrice(''); setMaxPrice('') }} style={{ flex: 1, padding: '8px 12px', borderRadius: 6, border: 'none', background: '#222', color: '#fff' }}>Скинути</button>
-              <button onClick={() => setShowFilters(false)} style={{ padding: '8px 12px', borderRadius: 6, border: '1px solid #ddd', background: '#fff' }}>Готово</button>
+            <div className="d-flex gap-2">
+              <button 
+                onClick={() => { setQuery(''); setInStockOnly(false); setMinPrice(''); setMaxPrice('') }} 
+                className="btn btn-dark w-100 py-2"
+              >
+                Скинути
+              </button>
+              <button onClick={() => setShowFilters(false)} className="btn btn-outline-secondary d-md-none w-100">
+                Закрити
+              </button>
             </div>
           </div>
         )}
 
         {/* Right: Products */}
-        <div style={{ flex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(220px,1fr))', gap: 20 }}>
+        <div className="category-content">
+          <div className="category-grid">
             {filtered.map(p => (
-              <Link to={`/product/${p.id}`} key={p.id} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div style={{ border: '1px solid #eee', borderRadius: 8, overflow: 'hidden', background: '#fff' }}>
-                  <div style={{ height: 180, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fafafa' }}>
-                    <img src={p.image} alt={p.name} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+              <Link to={`/product/${p.id}`} key={p.id} className="text-decoration-none">
+                <div className="category-product-card shadow-sm border-0">
+                  <div className="card-image-wrapper">
+                    <img src={p.image} alt={p.name} className="img-fluid" />
                   </div>
-                  <div style={{ padding: 12 }}>
-                    <h4 style={{ fontSize: 15, margin: '0 0 8px 0' }}>{p.name}</h4>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <div style={{ fontWeight: 700 }}>{p.price} ₴</div>
-                      <div style={{ color: p.in_stock ? '#2a8f4f' : '#b54545', fontSize: 13 }}>{p.in_stock ? 'В наявності' : 'Немає в наявності'}</div>
+                  <div className="card-body p-3">
+                    <h4 className="product-title text-dark">{p.name}</h4>
+                    <div className="d-flex justify-content-between align-items-end mt-2">
+                      <div className="product-price fw-bold fs-5 text-dark">{p.price} ₴</div>
+                      <div className={`stock-status ${p.in_stock ? 'in-stock' : 'out-of-stock'}`}>
+                        {p.in_stock ? 'В наявності' : 'Немає'}
+                      </div>
                     </div>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
+          {filtered.length === 0 && (
+            <div className="text-center py-5">
+              <p className="text-muted">Нічого не знайдено за вашим запитом</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
