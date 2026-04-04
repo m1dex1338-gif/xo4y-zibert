@@ -1,10 +1,106 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import Fuse from 'fuse.js';
 
 function Nav() {
   
   const [cartCount, setCartCount] = useState(0);
   const [wishlistCount, setWishlistCount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [popularCategories, setPopularCategories] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const debounceTimer = useRef(null);
+
+  // Завантаження популярних категорій для порожнього стану
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/shop/categories/')
+      .then(r => r.json())
+      .then(data => {
+        if (data.categories) {
+          setPopularCategories(data.categories.slice(0, 6));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Завантаження кешу для fuzzy fallback
+  useEffect(() => {
+    const cached = localStorage.getItem('searchProductsCache');
+    const cacheTime = localStorage.getItem('searchProductsCacheTime');
+    if (cached && cacheTime && Date.now() - parseInt(cacheTime) < 24 * 60 * 60 * 1000) {
+      setAllProducts(JSON.parse(cached));
+    } else {
+      fetch('http://127.0.0.1:8000/shop/products/')
+        .then(r => r.json())
+        .then(data => {
+          if (data.products) {
+            setAllProducts(data.products);
+            localStorage.setItem('searchProductsCache', JSON.stringify(data.products));
+            localStorage.setItem('searchProductsCacheTime', Date.now().toString());
+          }
+        })
+        .catch(() => {});
+    }
+  }, []);
+
+  // Debounce — запускаємо пошук через 300мс після зупинки введення
+  useEffect(() => {
+    if (debounceTimer.current) clearTimeout(debounceTimer.current);
+    debounceTimer.current = setTimeout(() => {
+      setDebouncedQuery(searchQuery);
+    }, 300);
+    return () => clearTimeout(debounceTimer.current);
+  }, [searchQuery]);
+
+  // Бекенд-пошук + fuzzy fallback
+  useEffect(() => {
+    const q = debouncedQuery.trim();
+    if (!q) {
+      setSearchResults([]);
+      return;
+    }
+    setIsSearching(true);
+    fetch(`http://127.0.0.1:8000/shop/search/?q=${encodeURIComponent(q)}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.results && data.results.length > 0) {
+          setSearchResults(data.results);
+        } else if (allProducts.length > 0) {
+          // Fuzzy fallback через fuse.js (для друкарських помилок)
+          const fuse = new Fuse(allProducts, {
+            keys: ['name'],
+            threshold: 0.4,
+            includeMatches: true,
+          });
+          const fuzzyResults = fuse.search(q).slice(0, 10).map(r => r.item);
+          setSearchResults(fuzzyResults);
+        } else {
+          setSearchResults([]);
+        }
+      })
+      .catch(() => {
+        // Якщо бекенд недоступний — тільки fuzzy
+        if (allProducts.length > 0) {
+          const fuse = new Fuse(allProducts, { keys: ['name'], threshold: 0.4 });
+          setSearchResults(fuse.search(q).slice(0, 10).map(r => r.item));
+        }
+      })
+      .finally(() => setIsSearching(false));
+  }, [debouncedQuery, allProducts]);
+
+  // Функція підсвічування збігів
+  const highlight = (text, query) => {
+    if (!query.trim() || !text) return text;
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    const parts = text.split(regex);
+    return parts.map((part, i) =>
+      regex.test(part) ? <mark key={i} style={{backgroundColor:'#fff3cd', padding:'0 2px', borderRadius:'2px'}}>{part}</mark> : part
+    );
+  };
+
   
   const updateCounts = () => {
 
@@ -88,7 +184,7 @@ function Nav() {
 
          <ul className="d-lg-none d-flex align-items-center gap-3 m-0 p-0">
           <li className="nav-item">
-            <a href="#">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#searchModal" onClick={closeMenu}>
               <i className="bi bi-search fs-5 text-dark"></i>       
             </a>
           </li>
@@ -144,7 +240,7 @@ function Nav() {
 
            <ul className='navbar-nav d-none d-lg-flex align-items-center gap-4'>
             <li className="nav-item">
-             <a href="#">
+             <a href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
               <i className="bi bi-search fs-5 text-dark"></i>       
              </a>
             </li>
@@ -217,6 +313,132 @@ function Nav() {
         </div>
       </div>  
      </div>
+
+     <div className="modal fade" id='searchModal' tabIndex='-1' aria-labelledby='searchModalLabel' aria-hidden='true'>
+      <div className="modal-dialog modal-dialog-centered modal-lg">
+        <div className="modal-content p-4">
+          <div className="modal-header border-0 pb-0">
+            <h5 className="modal-title fw-bold" id='searchModalLabel'>Пошук товарів</h5>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div className="modal-body pt-3">
+            {/* Search input */}
+            <div className="position-relative mb-4">
+              <i className="bi bi-search position-absolute text-muted" style={{top:'50%', left:'14px', transform:'translateY(-50%)', zIndex:1}}></i>
+              <input 
+                type="text" 
+                className='form-control form-control-lg ps-5'
+                placeholder='Що ви шукаєте? (Наприклад: Стілець)'
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                autoComplete="off"
+                autoFocus
+              />
+              {searchQuery && (
+                <button
+                  className="btn btn-sm position-absolute border-0 bg-transparent text-muted"
+                  style={{top:'50%', right:'12px', transform:'translateY(-50%)'}}
+                  onClick={() => setSearchQuery('')}
+                  aria-label="Очистити"
+                >
+                  <i className="bi bi-x-lg"></i>
+                </button>
+              )}
+            </div>
+
+            {/* Спінер під час пошуку */}
+            {isSearching && (
+              <div className="text-center py-4">
+                <div className="spinner-border spinner-border-sm text-secondary" role="status">
+                  <span className="visually-hidden">Пошук...</span>
+                </div>
+                <p className="text-muted mt-2 mb-0 small">Шукаємо...</p>
+              </div>
+            )}
+
+            {/* Нічого не знайдено */}
+            {!isSearching && debouncedQuery.trim() !== '' && searchResults.length === 0 && (
+              <div className="text-center py-5">
+                <i className="bi bi-search text-muted" style={{fontSize:'2rem'}}></i>
+                <p className="text-muted mt-2">Нічого не знайдено за запитом <strong>"{debouncedQuery}"</strong></p>
+                <p className="text-muted small">Спробуйте інше слово або перевірте правопис</p>
+              </div>
+            )}
+
+            {/* Результати пошуку */}
+            {!isSearching && searchResults.length > 0 && (
+              <>
+                <p className="text-muted small mb-2">Знайдено {searchResults.length} результатів</p>
+                <div className="row g-3" style={{maxHeight: '400px', overflowY: 'auto'}}>
+                  {searchResults.map(product => (
+                    <div className="col-12 col-md-6" key={product.id}>
+                      <Link 
+                        to={`/product/${product.id}`} 
+                        className="text-decoration-none" 
+                        onClick={() => {
+                          const closeBtn = document.querySelector('#searchModal .btn-close');
+                          if (closeBtn) closeBtn.click();
+                        }}
+                      >
+                        <div className="d-flex align-items-center p-2 border rounded" style={{transition:'background 0.15s'}}
+                          onMouseEnter={e => e.currentTarget.style.background='#f8f9fa'}
+                          onMouseLeave={e => e.currentTarget.style.background=''}
+                        >
+                          <img 
+                            src={product.images ? product.images[0] : product.image} 
+                            alt={product.name} 
+                            style={{width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px', flexShrink:0}} 
+                          />
+                          <div className="ms-3 overflow-hidden">
+                            <h6 className="mb-1 fw-semibold text-dark text-truncate">
+                              {highlight(product.name, debouncedQuery)}
+                            </h6>
+                            <div className="d-flex align-items-center gap-2">
+                              <span className="fw-bold text-dark">{product.price} ₴</span>
+                              {product.category && (
+                                <span className="badge bg-light text-muted border small">{product.category}</span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* Популярні категорії (коли запит порожній) */}
+            {!isSearching && searchQuery.trim() === '' && popularCategories.length > 0 && (
+              <div>
+                <p className="text-muted small fw-semibold mb-3">
+                  <i className="bi bi-fire me-1 text-warning"></i>Популярні категорії
+                </p>
+                <div className="d-flex flex-wrap gap-2">
+                  {popularCategories.map(cat => (
+                    <Link
+                      key={cat.id}
+                      to={`/category/${cat.id}`}
+                      className="badge text-dark text-decoration-none py-2 px-3"
+                      style={{background:'#f1f3f5', fontSize:'0.85rem', borderRadius:'20px', border:'1px solid #dee2e6', transition:'background 0.15s'}}
+                      onMouseEnter={e => e.currentTarget.style.background='#e9ecef'}
+                      onMouseLeave={e => e.currentTarget.style.background='#f1f3f5'}
+                      onClick={() => {
+                        const closeBtn = document.querySelector('#searchModal .btn-close');
+                        if (closeBtn) closeBtn.click();
+                      }}
+                    >
+                      {cat.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>  
+     </div>
+
     </>
   );
 }

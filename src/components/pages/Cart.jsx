@@ -9,6 +9,16 @@ function Cart() {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  React.useEffect(() => {
+    const loadCartData = () => {
+      const savedCart = localStorage.getItem('cart');
+      setCartItems(savedCart ? JSON.parse(savedCart) : []);
+    };
+    
+    window.addEventListener('cartUpdated', loadCartData);
+    return () => window.removeEventListener('cartUpdated', loadCartData);
+  }, []);
+
   const updateQuantity = (id, type) => {
     const updated = cartItems.map(item => {
       if (item.id === id) {
@@ -62,14 +72,14 @@ function Cart() {
                 <div key={item.id} className="card shadow-sm border-0 rounded-4 mb-3 p-3 text-dark">
                   <div className="row align-items-center">
                     <div className="col-3 col-md-2">
-                      <img src={item.image} alt={item.Productname} className="img-fluid rounded-3" />
+                      <img src={item.images ? item.images[0] : item.image} alt={item.name || item.Productname} className="img-fluid rounded-3" />
                     </div>
                     <div className="col-9 col-md-10 d-flex flex-column flex-md-row justify-content-between align-items-center">
                       <div className="text-start w-100 ps-md-3">
-                        <h5 className="mb-2">{item.Productname}</h5>
+                        <h5 className="mb-2">{item.name || item.Productname}</h5>
                         <p className="text-muted mb-1">Ціна: {item.price}</p>
                         <p className="text-muted mb-1 fw-bold">
-                          Всього: ${(parseFloat(String(item.price).replace(/[^\d.-]/g, '')) * (item.quantity || 1)).toFixed(2)}
+                          Всього: {((parseFloat(String(item.price).replace(/[^\d.-]/g, '')) * (item.quantity || 1)).toFixed(2))} ₴
                         </p>
                       </div>
                       <div className="d-flex align-items-center gap-3 mt-3 mt-md-0">
@@ -97,11 +107,11 @@ function Cart() {
                 <hr />
                 <div className="d-flex justify-content-between mb-4">
                   <span className="fw-bold">Загальна вартість:</span>
-                  <span className="fw-bold fs-4">${totalPrice.toFixed(2)}</span>
+                  <span className="fw-bold fs-4">{totalPrice.toFixed(2)} ₴</span>
                 </div>
-                <button className="btn btn-primary w-100 py-3 rounded-pill fw-bold">
+                <Link to="/checkout" className="btn btn-primary w-100 py-3 rounded-pill fw-bold">
                   Оформити замовлення
-                </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "2",
+    "name": "Відбійник меблевий PG-065 SMART PUSH Standard T1 білий",
+    "price": 276.0,
+    "images": [
+      "https://vdm-shop.com.ua/upload/catalog/11300/11211/a172475054af6ab0613bf9f056a16f05.jpg",
+      "https://vdm-shop.com.ua/upload/catalog/11300/11211/97d967baa389e49b9978894388b92365.png"
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Відбійник дверний PG-076 P2 чорний",
+    "price": 242.0,
+    "images": [
+      "https://vdm-shop.com.ua/upload/catalog/11400/11318/c58a4baed4fbeb9cfda5e51300454f01.jpg",
+      "https://vdm-shop.com.ua/upload/catalog/11400/11318/279518a5484fe1b6684c9fa6142a135d.jpg"
+    ]
+  },
+  {
+    "id": "138",
+    "name": "Вішак меблевий WM 057 P41 білий",
+    "price": 208.0,
+    "images": [
+      "https://vdm-shop.com.ua/upload/catalog/11400/11342/39581.jpg",
+      "https://vdm-shop.com.ua/upload/catalog/11400/11342/39581_t.jpg"
+    ]
+  },
+  {
+    "id": "1818",
+    "name": "Очисник INTERIOR CLEANER vanilla (750ml)",
+    "price": 159.0,
+    "images": [
+      "https://vdm-shop.com.ua/upload/catalog/11700/11664/11640.jpg",
+      "https://vdm-shop.com.ua/upload/catalog/11700/11664/activecare_in_vanilla.pdf_shche_3_stornki_profl_.jpg"
+    ]
+  }
+]

@@ -7,8 +7,7 @@ import'swiper/css/effect-fade'
 
 // Data
 
-import Products from './../../Product.json'
-import ChairAnimation from '../ChairAnimation'
+import MainProducts from '../../main_products.json'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { ToastContainer, toast } from 'react-toastify'
@@ -40,9 +39,9 @@ function Index() {
       const updatedCart = [...existing, updatedProduct];
       localStorage.setItem('cart', JSON.stringify(updatedCart));
       window.dispatchEvent(new Event('cartUpdated'));
-      toast.success(`${product.name} Товар додано до кошика!`);
+      window.dispatchEvent(new CustomEvent('showCartModal', { detail: { product, message: 'Товар додано до кошика!' } }));
     } else {
-      toast.info(`${product.name} вже в кошику!`);
+      window.dispatchEvent(new CustomEvent('showCartModal', { detail: { product, message: 'Товар вже в кошику!' } }));
     }   
   }
 
@@ -57,7 +56,7 @@ function Index() {
             slidesPerView={1}
             spaceBetween={0}
             autoplay={{
-              delay: 3000,
+              delay: 6000,
             }}
           >
             <SwiperSlide>
@@ -92,8 +91,6 @@ function Index() {
             </SwiperSlide>
           </Swiper>  
         </div>
-        {/* Chair Animation */}
-        <ChairAnimation />
         {/* Products */}
         <div className="product-container py-5 my-5">
           <div className="container position-relative">
@@ -117,13 +114,13 @@ function Index() {
               }}   
               className='mt-4 swiper position-relative' 
             >
-              {Products.filter(product => product.id >= 0 && product.id <= 10).map(product => (
+              {MainProducts.map(product => (
                   <SwiperSlide key={product.id}>
                   <Link to={`/product/${product.id}`} className='text-decoration-none text-black'>
                     <div className="product-item text-center position-relative">
                       <div className="product-image w-100 position-relative overflow-hidden">
-                        <img src={product.image} alt="" className='img-fluid' />
-                        <img src={product.secondImage} alt="" className='img-fluid' />
+                        <img src={product.images[0]} alt="" className='img-fluid' />
+                        {product.images[1] && <img src={product.images[1]} alt="" className='img-fluid' />}
                         <div className="product-icons gap-3">
                           <div className="product-icon" title="Додати до списку бажань" onClick={(e) =>  {e.preventDefault(); e.stopPropagation(); addToWishlist(product);}}>
                             <i className="bi bi-heart fs-5"></i>
@@ -131,13 +128,15 @@ function Index() {
                           <div className="product-icon" title="Додати в кошик" onClick={(e) => {e.preventDefault(); e.stopPropagation(); addToCart(product);}}>
                             <i className="bi bi-cart3 fs-5"></i>
                           </div>
-                          <span className={`tag badge text-white ${product.tag === 'New' ? 'bg-danger' : 'bg-success'}`}>
-                            {product.tag}
-                          </span>
+                          {product.tag && (
+                            <span className={`tag badge text-white ${product.tag === 'New' ? 'bg-danger' : 'bg-success'}`}>
+                              {product.tag}
+                            </span>
+                          )}
                         </div>
                           <div className="product-content pt-3">
-                            <span className="price text-decoration-none">{product.price}</span>
-                            <h3 className='title pt-1'>{product.Productname}</h3>
+                            <span className="price text-decoration-none">{product.price} ₴</span>
+                            <h3 className='title pt-1'>{product.name}</h3>
                           </div>
                        </div> 
                     </div>
@@ -147,6 +146,49 @@ function Index() {
             </Swiper>
           </div>
         </div>
+
+        {/* Brands */}
+        <section className="brands-section py-5">
+          <div className="container">
+            <div className="brands-header d-flex justify-content-between align-items-center mb-4">
+              <div>
+                <h2 className="fw-semibold fs-2 mb-1">Бренди</h2>
+                <p className="text-muted mb-0">Ми працюємо лише з перевіреними виробниками</p>
+              </div>
+              <Link to="/brands" className="btn btn-outline-dark px-4">
+                Всі бренди <i className="bi bi-arrow-right ms-1"></i>
+              </Link>
+            </div>
+            <div className="brands-grid">
+              {[
+                { name: 'GTV',      img: 'https://vdm-shop.com.ua/upload/filters/900/gtv.jpg' },
+                { name: 'MAAG',     img: 'https://vdm-shop.com.ua/upload/filters/900/mag.jpg' },
+                { name: 'Rejs',     img: 'https://vdm-shop.com.ua/upload/filters/900/reis.png' },
+                { name: 'ZBYTEX',   img: 'https://vdm-shop.com.ua/upload/filters/900/zbytex.png' },
+                { name: 'GAMET',    img: 'https://vdm-shop.com.ua/upload/filters/900/gamet.png' },
+                { name: 'ATM',      img: 'https://vdm-shop.com.ua/upload/filters/900/atm.jpg' },
+                { name: 'Sevroll',  img: 'https://vdm-shop.com.ua/upload/filters/900/sevroll.jpg' },
+                { name: 'AMIG',     img: 'https://vdm-shop.com.ua/upload/filters/900/amig.jpg' },
+                { name: 'MANTION',  img: 'https://vdm-shop.com.ua/upload/filters/900/mantion.png' },
+                { name: 'Häfele',   img: 'https://vdm-shop.com.ua/upload/filters/900/hafele.jpg' },
+                { name: 'FGV',      img: 'https://vdm-shop.com.ua/upload/filters/900/fgv.png' },
+                { name: 'ALTORI',   img: 'https://vdm-shop.com.ua/upload/filters/900/altori.png' },
+              ].map(brand => (
+                <a
+                  key={brand.name}
+                  href="https://vdm-shop.com.ua/brendy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="brand-card"
+                  title={brand.name}
+                >
+                  <img src={brand.img} alt={brand.name} />
+                  <span className="brand-name">{brand.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <ToastContainer
         autoClose={2000}

@@ -8,10 +8,22 @@ function Wishlist() {
     const [cart, setCart] = useState([]);
 
     useEffect(() => {
-        const storedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-        setWishlist(storedWishlist);
-        setCart(storedCart);
+        const loadInitialData = () => {
+            const storedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+            setWishlist(storedWishlist);
+            setCart(storedCart);
+        };
+        
+        loadInitialData();
+
+        window.addEventListener('wishlistUpdated', loadInitialData);
+        window.addEventListener('cartUpdated', loadInitialData);
+
+        return () => {
+            window.removeEventListener('wishlistUpdated', loadInitialData);
+            window.removeEventListener('cartUpdated', loadInitialData);
+        };
     }, []);
 
     const removeFromWishlist = (productId) => {
@@ -37,15 +49,7 @@ function Wishlist() {
         setCart(updatedCart);
         localStorage.setItem('cart', JSON.stringify(updatedCart));
         window.dispatchEvent(new Event('cartUpdated'));
-        toast.success(`${product.Productname} Товар додано до кошика!`, {
-            autoClose: 2000,
-            position: "top-right",
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        window.dispatchEvent(new CustomEvent('showCartModal', { detail: { product, message: 'Товар додано до кошика!' } }));
         
 
     
@@ -77,7 +81,7 @@ function Wishlist() {
                 <div className="col" key={product.id}>
                   <div className="card h-100 shadow-sm border-0">
                     <div className="position-relative overflow-hidden" style={{height:'250px', backgroundColor:'#f8f9fa'}}>
-                      <img src={product.image} className='card-img-top h-100 object-fit-cover' alt="" />
+                      <img src={product.images ? product.images[0] : product.image} className='card-img-top h-100 object-fit-cover' alt="" />
                       {product.tag && (
                         <span className={`badge position-absolute top-0 end-0 m-2 ${product.tag === 'New' ? 'bg-danger' : 'bg-success'}`}>
                           {product.tag}
@@ -85,7 +89,7 @@ function Wishlist() {
                       )}
                     </div>
                     <div className="card-body d-flex flex-column text-center">
-                      <h5 className="card-title">{product.Productname}</h5>
+                      <h5 className="card-title">{product.name || product.Productname}</h5>
                       <p className="card-text fs-5 fw-semibold text-dark">{product.price}</p>
                       <div className="mt-auto d-flex justify-content-between gap-2">
                         <button className="btn w-100" onClick={() => addToCart(product)}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import categoriesData from '../../Categories.json'; 
 import { Link } from 'react-router-dom';
-import productsData from '../../Product.json'; 
+
 
 const Categories = () => {
   const categoriesList = categoriesData.categories;
