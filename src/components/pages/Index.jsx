@@ -49,47 +49,14 @@ function Index() {
     <>
         {/*  Hero  */}
         <div className="hero">
-          <Swiper
-            modules={[Autoplay, EffectFade]}
-            effect='fade'
-            loop={true}
-            slidesPerView={1}
-            spaceBetween={0}
-            autoplay={{
-              delay: 6000,
-            }}
-          >
-            <SwiperSlide>
-              <div className="hero-wrap hero-wrap1">
-                <div className="hero-content">
-                  <h5>- МАКСИМАЛЬНИЙ КОМФОРТ -</h5>
-                  <h1>Відчуйте себе <br /> як вдома</h1>
-                  <p className="my-3">Ідеальне поєднання стилю та домашнього затишку в нашій новій колекції м'яких меблів.</p>
-                  <a href="#" className='btn hero-btn mt-3'>До каталогу</a>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
               <div className="hero-wrap hero-wrap2">
                 <div className="hero-content">
-                  <h5>- СУЧАСНЕ ЖИТТЯ -</h5>
-                  <h1>Мінімалізм та <br /> Функціональність</h1>
-                  <p className="my-3">Чіткі лінії та розумний дизайн, що перетворюють звичайний простір на сучасний інтер'єр.</p>
+                  <h5>- Все починається з дому -</h5>
+                  <h1>Якісна меблева та  <br /> дверна фурнітура</h1>
+                  <p className="my-3">за розумною ціною в Україні</p>
                   <a href="#" className='btn hero-btn mt-3'>До каталогу</a>
                 </div>
               </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="hero-wrap hero-wrap3">
-                <div className="hero-content">
-                  <h5>- ЧАС ДЛЯ СНІВ -</h5>
-                  <h1>Спіть краще, <br /> живіть яскравіше</h1>
-                  <p className="my-3">Відкрийте для себе ергономічні ліжка та матраци для відпочинку, на який ви заслуговуєте.</p>
-                  <a href="#" className='btn hero-btn mt-3'>До каталогу</a>
-                </div>
-              </div>
-            </SwiperSlide>
-          </Swiper>  
         </div>
         {/* Products */}
         <div className="product-container py-5 my-5">

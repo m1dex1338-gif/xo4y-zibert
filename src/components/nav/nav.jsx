@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Fuse from 'fuse.js';
+import categoriesData from '../../Categories.json';
 
 function Nav() {
   
@@ -13,6 +14,12 @@ function Nav() {
   const [popularCategories, setPopularCategories] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const debounceTimer = useRef(null);
+
+  // Group categories for dropdown
+  const doorCategoryIds = [6, 24, 26, 55, 57]; // Adding 57 (Для вікон) maybe, wait let's just stick to what is obviously doors, I will include 57 here too or omit it. Actually let's use 6, 24, 26, 55
+  const allCategorList = categoriesData?.categories || [];
+  const doorCategories = allCategorList.filter(cat => doorCategoryIds.includes(cat.id));
+  const furnitureCategories = allCategorList.filter(cat => !doorCategoryIds.includes(cat.id));
 
   // Завантаження популярних категорій для порожнього стану
   useEffect(() => {
@@ -219,11 +226,38 @@ function Nav() {
              <li className="nav-item">
               <Link to="/about" className='nav-link' onClick={closeMenu}>Про нас</Link>
             </li>
-             <li className="nav-item">
-              <Link to="/categories" className='nav-link' onClick={closeMenu}>Каталог</Link>
+             <li className="nav-item dropdown">
+              <a className="nav-link" href="#" id="furnitureDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Меблева
+              </a>
+              <ul className="dropdown-menu shadow-lg border-0 p-2 custom-scroll" aria-labelledby="furnitureDropdown" style={{maxHeight: '400px', overflowY: 'auto', minWidth: '300px'}}>
+                  {furnitureCategories.map(cat => (
+                    <li key={cat.id}>
+                      <Link to={`/category/${cat.id}`} className="dropdown-item rounded py-2" onClick={closeMenu} style={{whiteSpace: 'normal', fontSize: '0.9rem', transition: 'background-color 0.2s'}}>
+                        {cat.name}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
             </li>
-             <li className="nav-item">
-              <Link to="/blog" className='nav-link' onClick={closeMenu}>Блог</Link>
+             <li className="nav-item dropdown">
+              <a className="nav-link" href="#" id="doorDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Дверна
+              </a>
+              <ul className="dropdown-menu shadow-lg border-0 p-2 custom-scroll" aria-labelledby="doorDropdown" style={{maxHeight: '400px', overflowY: 'auto', minWidth: '300px'}}>
+                  <li>
+                    <Link to='/categories' className="dropdown-item text-primary fw-semibold rounded py-2 mb-1" onClick={closeMenu} style={{fontSize: '0.9rem'}}>
+                      Усі категорії
+                    </Link>
+                  </li>
+                  {doorCategories.map(cat => (
+                    <li key={cat.id}>
+                      <Link to={`/category/${cat.id}`} className="dropdown-item rounded py-2" onClick={closeMenu} style={{whiteSpace: 'normal', fontSize: '0.9rem', transition: 'background-color 0.2s'}}>
+                        {cat.name}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
             </li>
              <li className="nav-item">
               <Link to="/contact" className='nav-link' onClick={closeMenu}>Контакти</Link>
@@ -244,12 +278,12 @@ function Nav() {
               <i className="bi bi-search fs-5 text-dark"></i>       
              </a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
              <a href="#" data-bs-toggle='modal' data-bs-target='#signupModal'>
               <i className="bi bi-person fs-5 text-dark"></i>       
              </a>
-            </li>
-            <li className="nav-item position-relative">
+            </li> */}
+            {/* <li className="nav-item position-relative">
               <Link to='/wishlist'>
               <i className="bi bi-heart fs-5 text-dark"></i>
               {wishlistCount > 0 && (
@@ -258,7 +292,7 @@ function Nav() {
                 </span>
               )}
              </Link>
-            </li>
+            </li> */}
             <li className="nav-item position-relative">
               <Link to='/cart'>
               <i className="bi bi-bag fs-5 text-dark"></i>
