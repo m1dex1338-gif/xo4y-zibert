@@ -183,8 +183,8 @@ function Nav() {
 
          {/* Mobile Logo */}
 
-         <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex' onClick={closeMenu}>
-            <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
+         <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex align-items-center' onClick={closeMenu}>
+            <img src="/logo.png" alt="Все для дому" className="navbar-logo" />
          </Link>
 
          {/* Mobile Icon */}
@@ -266,8 +266,12 @@ function Nav() {
 
            {/* Center logo */}
            
-            <Link to='/' className='navbar-brand mx-auto d-none d-lg-flex'>
-                <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
+            <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex' onClick={closeMenu}>
+            <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
+            </Link>
+
+            <Link to='/' className='navbar-brand mx-auto d-none d-lg-flex align-items-center'>
+                <img src="/logo.png" alt="Все для дому" className="navbar-logo" />
             </Link>
            
            {/* Right Icons */}

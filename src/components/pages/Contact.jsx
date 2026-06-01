@@ -29,7 +29,7 @@ function Contact() {
                   </div>
                   <div>
                     <h6 className="fw-bold mb-1">Адреса</h6>
-                    <p className="text-muted mb-0">м. Київ, вул. Меблева, 15</p>
+                    <p className="text-muted mb-0">м. Виноградів, вул. Станційна, 16</p>
                   </div>
                 </div>
 
@@ -39,7 +39,7 @@ function Contact() {
                   </div>
                   <div>
                     <h6 className="fw-bold mb-1">Телефон</h6>
-                    <p className="text-muted mb-0">+38 099 123 45 67</p>
+                    <p className="text-muted mb-0">+38 066 019 90 61</p>
                   </div>
                 </div>
 

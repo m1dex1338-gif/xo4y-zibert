@@ -33,8 +33,8 @@ function Footer() {
             <h5 className="footer-title fw-bold mb-4">Інформація</h5>
             <ul className="footer-links list-unstyled">
               <li><Link to="/about">Про нас</Link></li>
-              <li><Link to="/shipping">Доставка і оплата</Link></li>
-              <li><Link to="/returns">Повернення</Link></li>
+              {/* <li><Link to="/shipping">Доставка і оплата</Link></li> */}
+              {/* <li><Link to="/returns">Повернення</Link></li> */}
               <li><Link to="/contact">Контакти</Link></li>
             </ul>
           </div>
@@ -44,11 +44,11 @@ function Footer() {
             <ul className="footer-contact list-unstyled text-muted">
               <li className="d-flex align-items-center mb-3">
                 <i className="bi bi-geo-alt-fill me-3 fs-5"></i>
-                <span>м. Київ, вул. Меблева, 15</span>
+                <span>м. Виноградів, вул. Станційна, 16</span>
               </li>
               <li className="d-flex align-items-center mb-3">
                 <i className="bi bi-telephone-fill me-3 fs-5"></i>
-                <span>+38 099 123 45 67</span>
+                <span>+38 066 019 90 61</span>
               </li>
               <li className="d-flex align-items-center mb-3">
                 <i className="bi bi-envelope-fill me-3 fs-5"></i>

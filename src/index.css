@@ -155,6 +155,41 @@ body{
   width: 100%;
 }
 
+.navbar-logo {
+  height: 48px;
+  max-height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: transform var(--transition-regular);
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .navbar-logo {
+    height: 38px;
+    max-height: 38px;
+  }
+}
+
+@media (max-width: 575px) {
+  .navbar-logo {
+    height: 34px;
+    max-height: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-logo {
+    transition: none;
+  }
+  .navbar-logo:hover {
+    transform: none;
+  }
+}
+
 /* Nav MQ section */
 
 /* --- Responsive Media Queries --- */
@@ -375,7 +410,7 @@ body{
   animation: Anim-zoomOut var(--transition-regular) forwards linear;
 }
 .hero-wrap2 {
-  background-image: url(https://realestate.24tv.ua/resources/photos/news/202012/1498636.jpg?v=1661265990000);
+  background-image: url(/Images/landing.jpg);
 }
 .hero-wrap3 {
   background-image: url(https://cdn.taburetka.ua/images/statya/statia_97_001.jpg);
