@@ -52,7 +52,7 @@ function Footer() {
               </li>
               <li className="d-flex align-items-center mb-3">
                 <i className="bi bi-envelope-fill me-3 fs-5"></i>
-                <span>info@vsedlyadomu.com</span>
+                <span>info@gns.com</span>
               </li>
             </ul>
           </div>

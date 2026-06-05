@@ -21,7 +21,7 @@ function ProductDetails() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://127.0.0.1:8000/shop/product/${id}`)
+    fetch(`/shop/product/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Not found');
         return res.json();
@@ -84,14 +84,14 @@ function ProductDetails() {
           </div>
 
           <div className="col-xl-6">
-            <h5 className="fw-bold">
-              {product.price}
+            <h5 className="fw-bold fs-3 text-dark mb-3">
+              {product.price} ₴
             </h5>
-            <h2 className="mb-5 fw-semibold">
+            <h2 className="mb-5 fw-semibold text-dark">
               {product?.name || product?.Productname}
             </h2>
 
-            <p className="fw-semibold mb-1">
+            <p className="fw-semibold mb-1 text-dark">
               Кількість
             </p>
             <div className="d-flex align-items-center gap-3 mb-3 quantity">
@@ -106,6 +106,7 @@ function ProductDetails() {
                   className='form-control text-center mx-2'
                   value={quantity}
                   readOnly
+                  style={{ fontWeight: 'bold' }}
                 />
                 <button className='btn-count border-0' 
                 onClick={() => setQuantity((q) => Math.max(1, q + 1))}
@@ -132,9 +133,14 @@ function ProductDetails() {
               Купити зараз
             </Link>
             <hr />
-            <p><strong>Виробник:</strong> Все для дому</p>  
-            <p><strong>Категорії:</strong> Меблі, Популярне, Новинки, Для дому</p>
-            <p><strong>Артикул:</strong> {product?.id}</p>
+            <p className="mb-1"><strong>Виробник:</strong> {product.brand || 'Все для дому'}</p>  
+            <p className="mb-1"><strong>Категорія:</strong> {product.category_name || 'Меблева фурнітура'}</p>
+            <p className="mb-1"><strong>Артикул:</strong> {product.article || product.id}</p>
+            {product.donor_link && (
+              <p className="mb-0">
+                <strong>Посилання:</strong> <a href={product.donor_link} target="_blank" rel="noopener noreferrer" className="text-decoration-underline text-dark">Донорський сайт</a>
+              </p>
+            )}
           </div>      
         </div>
       </div>
@@ -152,6 +158,19 @@ function ProductDetails() {
               Опис
             </button>
           </li>
+          {product.characteristics && Object.keys(product.characteristics).length > 0 && (
+            <li className="nav-item" role="presentation">
+              <button
+                className="nav-link tab border-0 fw-bold fs-4 text-capitalize"
+                id="specs-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#specs"
+                type="button"
+              >
+                Характеристики
+              </button>
+            </li>
+          )}
           <li className="nav-item" role="presentation">
             <button
               className="nav-link tab border-0 fw-bold fs-4 text-capitalize"
@@ -167,17 +186,40 @@ function ProductDetails() {
 
         <div className="tab-content" id="productTabContent">
           <div className="tab-panel fade show active" id="description" role="tabpanel">
-            <p><strong>Ідеально підходить для будь-якого інтер'єру</strong></p>
-            <p>Сучасні меблі, виготовлені з якісних та екологічних матеріалів, що гарантують максимальний комфорт і довговічність. Деталі продумані до дрібниць, щоб забезпечити вам найкращий досвід використання щодня.</p>
-            <h5 className="mt-4">Переваги</h5>
-            <ul className="Benefits-list p-0">
-              <li className="position-relative">Високоякісні зносостійкі матеріали</li>
-              <li className="position-relative">Ергономічний дизайн та зручність</li>
-              <li className="position-relative">Довговічність та надійність у використанні</li>
-              <li className="position-relative">Стильний зовнішній вигляд</li>
-              <li className="position-relative">Просте та швидке збирання</li>
-            </ul>
+            {product.description_html ? (
+              <div className="product-html-description" dangerouslySetInnerHTML={{ __html: product.description_html }} />
+            ) : (
+              <>
+                <p><strong>{product.name} — висока якість та надійність</strong></p>
+                <p>{product.description_text || "Сучасні меблі та фурнітура, виготовлені з якісних та екологічних матеріалів, що гарантують максимальний комфорт і довговічність. Деталі продумані до дрібниць, щоб забезпечити вам найкращий досвід використання щодня."}</p>
+                <h5 className="mt-4">Переваги</h5>
+                <ul className="Benefits-list p-0">
+                  <li className="position-relative">Високоякісні зносостійкі матеріали</li>
+                  <li className="position-relative">Ергономічний дизайн та зручність</li>
+                  <li className="position-relative">Довговічність та надійність у використанні</li>
+                  <li className="position-relative">Стильний зовнішній вигляд</li>
+                  <li className="position-relative">Просте та швидке збирання</li>
+                </ul>
+              </>
+            )}
           </div>
+
+          {product.characteristics && Object.keys(product.characteristics).length > 0 && (
+            <div className="tab-panel fade" id="specs" role="tabpanel">
+              <div className="table-responsive">
+                <table className="table table-striped table-hover border">
+                  <tbody>
+                    {Object.entries(product.characteristics).map(([key, value]) => (
+                      <tr key={key}>
+                        <td className="fw-bold text-dark px-3 py-2" style={{ width: '35%', backgroundColor: '#f8f9fa' }}>{key}</td>
+                        <td className="text-muted px-3 py-2">{String(value)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
 
           <div className="tab-panel fade" id="shipping" role="tabpanel">
             <p>Ми пропонуємо кілька способів доставки, зокрема самовивіз, адресну доставку по місту та відправку поштовими службами по всій Україні. Обробляємо замовлення протягом 1-2 днів. Для більш детальної інформації ознайомтесь зі сторінками <Link to="/shipping" className="text-dark fw-bold">Доставка і оплата</Link> та <Link to="/returns" className="text-dark fw-bold">Повернення</Link>.</p>

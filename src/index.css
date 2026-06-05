@@ -608,6 +608,16 @@ body{
 }
 /* --- Category & Product Page Layouts --- */
 
+.category-page {
+  margin-top: 90px;
+}
+
+@media (max-width: 768px) {
+  .category-page {
+    margin-top: 70px;
+  }
+}
+
 .category-layout {
   display: flex;
   gap: 30px;

@@ -23,7 +23,7 @@ function Nav() {
 
   // Завантаження популярних категорій для порожнього стану
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/shop/categories/')
+    fetch('/shop/categories/')
       .then(r => r.json())
       .then(data => {
         if (data.categories) {
@@ -40,7 +40,7 @@ function Nav() {
     if (cached && cacheTime && Date.now() - parseInt(cacheTime) < 24 * 60 * 60 * 1000) {
       setAllProducts(JSON.parse(cached));
     } else {
-      fetch('http://127.0.0.1:8000/shop/products/')
+      fetch('/shop/products/')
         .then(r => r.json())
         .then(data => {
           if (data.products) {
@@ -70,7 +70,7 @@ function Nav() {
       return;
     }
     setIsSearching(true);
-    fetch(`http://127.0.0.1:8000/shop/search/?q=${encodeURIComponent(q)}`)
+    fetch(`/shop/search/?q=${encodeURIComponent(q)}`)
       .then(r => r.json())
       .then(data => {
         if (data.results && data.results.length > 0) {
@@ -181,11 +181,12 @@ function Nav() {
            </div>
          </button>
 
-         {/* Mobile Logo */}
+          {/* Mobile Logo */}
 
-         <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex align-items-center' onClick={closeMenu}>
-            <img src="/logo.png" alt="Все для дому" className="navbar-logo" />
-         </Link>
+          <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex align-items-center gap-2' onClick={closeMenu}>
+             <img src="/logo.png" alt="Все для дому" className="navbar-logo" />
+             <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
+          </Link>
 
          {/* Mobile Icon */}
 
@@ -266,13 +267,10 @@ function Nav() {
 
            {/* Center logo */}
            
-            <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex' onClick={closeMenu}>
-            <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
-            </Link>
-
-            <Link to='/' className='navbar-brand mx-auto d-none d-lg-flex align-items-center'>
-                <img src="/logo.png" alt="Все для дому" className="navbar-logo" />
-            </Link>
+             <Link to='/' className='navbar-brand mx-auto d-none d-lg-flex align-items-center gap-2'>
+                 <img src="/logo.png" alt="Все для дому" className="navbar-logo" />
+                 <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
+             </Link>
            
            {/* Right Icons */}
 

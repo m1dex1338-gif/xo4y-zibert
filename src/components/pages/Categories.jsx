@@ -7,7 +7,7 @@ const Categories = () => {
   const categoriesList = categoriesData.categories;
 
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
+    <div style={{ maxWidth: '1200px', margin: '80px auto 0 auto', padding: '40px 20px' }}>
       
       <h1 style={{ textAlign: 'center', marginBottom: '40px' }}>Каталог</h1>
 
