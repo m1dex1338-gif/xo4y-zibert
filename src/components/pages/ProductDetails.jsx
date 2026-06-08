@@ -133,7 +133,7 @@ function ProductDetails() {
               Купити зараз
             </Link>
             <hr />
-            <p className="mb-1"><strong>Виробник:</strong> {product.brand || 'Все для дому'}</p>  
+            <p className="mb-1"><strong>Виробник:</strong> {product.brand || 'GNS Furniture'}</p>  
             <p className="mb-1"><strong>Категорія:</strong> {product.category_name || 'Меблева фурнітура'}</p>
             <p className="mb-1"><strong>Артикул:</strong> {product.article || product.id}</p>
             {product.donor_link && (

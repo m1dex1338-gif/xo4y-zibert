@@ -8,7 +8,7 @@ function Footer() {
       <div className="container">
         <div className="row g-4">
           <div className="col-lg-4 col-md-6">
-            <h4 className="footer-brand mb-4 fw-bold">Все для дому</h4>
+            <h4 className="footer-brand mb-4 fw-bold">GNS Furniture</h4>
             <p className="footer-text mb-4 text-muted">
               Високоякісні меблі для вашого комфорту та сучасного стилю життя. Мрійте, відпочивайте, насолоджуйтесь.
             </p>
@@ -63,7 +63,7 @@ function Footer() {
         <div className="row text-center">
           <div className="col-12">
             <p className="footer-copyright text-muted mb-0">
-              &copy; {new Date().getFullYear()} Все для дому. Всі права захищено.
+              &copy; {new Date().getFullYear()} GNS Furniture. Всі права захищено.
             </p>
           </div>
         </div>

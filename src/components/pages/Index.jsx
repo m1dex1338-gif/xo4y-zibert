@@ -54,7 +54,7 @@ function Index() {
                   <h5>- Все починається з дому -</h5>
                   <h1>Якісна меблева та  <br /> дверна фурнітура</h1>
                   <p className="my-3">за розумною ціною в Україні</p>
-                  <a href="#" className='btn hero-btn mt-3'>До каталогу</a>
+                  <Link to="/categories" className='btn hero-btn mt-3'>До каталогу</Link>
                 </div>
               </div>
         </div>

@@ -3,6 +3,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
 function Checkout() {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
@@ -35,17 +50,53 @@ function Checkout() {
       return;
     }
     
-    // Тут буде логіка відправки в Telegram
-    // Наприклад: API.sendTelegram(formData, cartItems, totalPrice)
-    
-    // Імітація успішного замовлення:
-    toast.success('Замовлення успішно оформлено! Менеджер зв\'яжеться з вами найближчим часом.', {
-      onClose: () => {
-        localStorage.removeItem('cart');
-        window.dispatchEvent(new Event('cartUpdated'));
-        navigate('/');
-      }
-    });
+    // Формуємо товари для бекенду
+    const cart = cartItems.map(item => ({
+      id: item.id,
+      name: item.name || item.Productname || 'Без назви',
+      article: item.article || '',
+      price: typeof item.price === 'string' 
+        ? parseFloat(item.price.replace(/[^\d.-]/g, '')) 
+        : item.price,
+      quantity: item.quantity || 1
+    }));
+
+    const toastId = toast.info('Надсилання замовлення...', { autoClose: false });
+
+    fetch('/shop/checkout/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken') || ''
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        phone: formData.phone,
+        comment: formData.comment,
+        cart: cart
+      })
+    })
+      .then(res => {
+        toast.dismiss(toastId);
+        if (!res.ok) {
+          return res.json().then(data => {
+            throw new Error(data.error || 'Помилка при оформленні замовлення.');
+          });
+        }
+        return res.json();
+      })
+      .then(data => {
+        toast.success('Замовлення успішно оформлено! Менеджер зв\'яжеться з вами найближчим часом.', {
+          onClose: () => {
+            localStorage.removeItem('cart');
+            window.dispatchEvent(new Event('cartUpdated'));
+            navigate('/');
+          }
+        });
+      })
+      .catch(err => {
+        toast.error(`Не вдалося надіслати замовлення: ${err.message}`);
+      });
   };
 
   const handleChange = (e) => {

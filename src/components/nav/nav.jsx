@@ -184,8 +184,8 @@ function Nav() {
           {/* Mobile Logo */}
 
           <Link to='/' className='navbar-brand mx-auto order-0 d-lg-none d-flex align-items-center gap-2' onClick={closeMenu}>
-             <img src="/logo.png" alt="Все для дому" className="navbar-logo" />
-             <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
+              <img src="/logo.png" alt="GNS Furniture" className="navbar-logo" />
+              <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>GNS Furniture</h2>
           </Link>
 
          {/* Mobile Icon */}
@@ -268,8 +268,8 @@ function Nav() {
            {/* Center logo */}
            
              <Link to='/' className='navbar-brand mx-auto d-none d-lg-flex align-items-center gap-2'>
-                 <img src="/logo.png" alt="Все для дому" className="navbar-logo" />
-                 <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>Все для дому</h2>
+                  <img src="/logo.png" alt="GNS Furniture" className="navbar-logo" />
+                  <h2 className='m-0 fw-bold' style={{letterSpacing:'2px' }}>GNS Furniture</h2>
              </Link>
            
            {/* Right Icons */}
