@@ -8,10 +8,11 @@ import { Autoplay, EffectFade, Navigation } from 'swiper/modules'
 import'swiper/css';
 import'swiper/css/effect-fade';
 import'swiper/css/navigation'; 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 function ProductDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -41,7 +42,19 @@ function ProductDetails() {
     }
   }, [product]);
 
-  if (loading) return <div className="container py-5 text-center">Завантаження...</div>;
+  if (loading) {
+    return (
+      <div className="gns-loader-container" style={{ margin: '150px auto' }}>
+        <div className="gns-loader">
+          <div className="gns-loader-ring"></div>
+          <div className="gns-loader-ring"></div>
+          <div className="gns-loader-ring"></div>
+          <div className="gns-loader-pulse"></div>
+        </div>
+        <div className="gns-loader-text">Завантаження деталей...</div>
+      </div>
+    );
+  }
   if (!product) return <div className="container py-5 text-center text-danger">Товар не знайдено!</div>;
 
   return (
@@ -129,9 +142,29 @@ function ProductDetails() {
                 Додати в кошик
               </button>
             </div>  
-            <Link to="/checkout" className="btn btn-custome2 w-100 border-0 d-flex align-items-center justify-content-center">
+            <button 
+              type="button" 
+              className="btn btn-custome2 w-100 border-0 d-flex align-items-center justify-content-center"
+              onClick={() => {
+                const existing = JSON.parse(localStorage.getItem('cart')) || [];
+                const alreadyInCart = existing.find(p => p.id === product.id);
+                if (!alreadyInCart) {
+                  const updatedCart = [...existing, { ...product, quantity }];
+                  localStorage.setItem('cart', JSON.stringify(updatedCart));
+                  window.dispatchEvent(new Event('cartUpdated'));
+                } else {
+                  // Якщо вже є, збільшуємо кількість на вибрану
+                  const updatedCart = existing.map(p => 
+                    p.id === product.id ? { ...p, quantity: p.quantity + quantity } : p
+                  );
+                  localStorage.setItem('cart', JSON.stringify(updatedCart));
+                  window.dispatchEvent(new Event('cartUpdated'));
+                }
+                navigate('/checkout');
+              }}
+            >
               Купити зараз
-            </Link>
+            </button>
             <hr />
             <p className="mb-1"><strong>Виробник:</strong> {product.brand || 'GNS Furniture'}</p>  
             <p className="mb-1"><strong>Категорія:</strong> {product.category_name || 'Меблева фурнітура'}</p>
@@ -185,7 +218,7 @@ function ProductDetails() {
         </ul>
 
         <div className="tab-content" id="productTabContent">
-          <div className="tab-panel fade show active" id="description" role="tabpanel">
+          <div className="tab-pane fade show active" id="description" role="tabpanel">
             {product.description_html ? (
               <div className="product-html-description" dangerouslySetInnerHTML={{ __html: product.description_html }} />
             ) : (
@@ -205,7 +238,7 @@ function ProductDetails() {
           </div>
 
           {product.characteristics && Object.keys(product.characteristics).length > 0 && (
-            <div className="tab-panel fade" id="specs" role="tabpanel">
+            <div className="tab-pane fade" id="specs" role="tabpanel">
               <div className="table-responsive">
                 <table className="table table-striped table-hover border">
                   <tbody>
@@ -221,7 +254,7 @@ function ProductDetails() {
             </div>
           )}
 
-          <div className="tab-panel fade" id="shipping" role="tabpanel">
+          <div className="tab-pane fade" id="shipping" role="tabpanel">
             <p>Ми пропонуємо кілька способів доставки, зокрема самовивіз, адресну доставку по місту та відправку поштовими службами по всій Україні. Обробляємо замовлення протягом 1-2 днів. Для більш детальної інформації ознайомтесь зі сторінками <Link to="/shipping" className="text-dark fw-bold">Доставка і оплата</Link> та <Link to="/returns" className="text-dark fw-bold">Повернення</Link>.</p>
           </div>
 

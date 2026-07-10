@@ -177,11 +177,31 @@ function Brands() {
   )
 }
 
+const getBrandUrl = (name) => {
+  if (name === 'ItalianaFerramenta') {
+    return 'https://vdm-shop.com.ua/search/?search=Italiana+Ferramenta';
+  }
+  
+  const exceptions = {
+    'Häfele': 'hfele',
+    'Новий стиль': 'novyi-styl',
+    'Україна': 'ukrana',
+    'Pattex': 'pattex-'
+  };
+  
+  const slug = exceptions[name] || name.toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[äöü]/g, c => ({ ä: 'a', ö: 'o', ü: 'u' })[c] || c);
+    
+  return `https://vdm-shop.com.ua/brd:${slug}/`;
+}
+
 function BrandCard({ brand }) {
   const bg = getBrandColor(brand.name)
+  const url = getBrandUrl(brand.name)
   return (
     <a
-      href={`https://vdm-shop.com.ua/brd:${brand.name.toLowerCase().replace(/\s+/g, '-').replace(/[äöü]/g, c => ({ ä: 'a', ö: 'o', ü: 'u' })[c] || c)}/`}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       className="brands-full-card"

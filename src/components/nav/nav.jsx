@@ -16,18 +16,19 @@ function Nav() {
   const debounceTimer = useRef(null);
 
   // Group categories for dropdown
-  const doorCategoryIds = [6, 24, 26, 55, 57]; // Adding 57 (Для вікон) maybe, wait let's just stick to what is obviously doors, I will include 57 here too or omit it. Actually let's use 6, 24, 26, 55
-  const allCategorList = categoriesData?.categories || [];
-  const doorCategories = allCategorList.filter(cat => doorCategoryIds.includes(cat.id));
-  const furnitureCategories = allCategorList.filter(cat => !doorCategoryIds.includes(cat.id));
+  const [categoriesList, setCategoriesList] = useState(categoriesData?.categories || []);
+  const doorCategoryIds = [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82];
+  const doorCategories = categoriesList.filter(cat => doorCategoryIds.includes(cat.id));
+  const furnitureCategories = categoriesList.filter(cat => !doorCategoryIds.includes(cat.id));
 
-  // Завантаження популярних категорій для порожнього стану
+  // Завантаження популярних категорій для порожнього стану та оновлення живого списку категорій
   useEffect(() => {
     fetch('/shop/categories/')
       .then(r => r.json())
       .then(data => {
         if (data.categories) {
           setPopularCategories(data.categories.slice(0, 6));
+          setCategoriesList(data.categories);
         }
       })
       .catch(() => {});

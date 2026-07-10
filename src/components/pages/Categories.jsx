@@ -1,10 +1,35 @@
-import React from 'react';
-import categoriesData from '../../Categories.json'; 
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-
 const Categories = () => {
-  const categoriesList = categoriesData.categories;
+  const [categoriesList, setCategoriesList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/shop/categories/')
+      .then(res => res.json())
+      .then(data => {
+        if (data.categories) {
+          setCategoriesList(data.categories);
+        }
+      })
+      .catch(err => console.error("Error fetching categories:", err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="gns-loader-container" style={{ margin: '120px auto' }}>
+        <div className="gns-loader">
+          <div className="gns-loader-ring"></div>
+          <div className="gns-loader-ring"></div>
+          <div className="gns-loader-ring"></div>
+          <div className="gns-loader-pulse"></div>
+        </div>
+        <div className="gns-loader-text">Завантаження каталогу...</div>
+      </div>
+    );
+  }
 
   return (
     <div style={{ maxWidth: '1200px', margin: '80px auto 0 auto', padding: '40px 20px' }}>
@@ -18,40 +43,39 @@ const Categories = () => {
       }}>
         {categoriesList.map((category) => (
           <Link key={category.id} to={`/category/${category.id}`} className="category-link">
-          <div 
-            key={category.id} 
-            style={{ 
-              border: '1px solid #eee', 
-              borderRadius: '10px', 
-              overflow: 'hidden',
-              cursor: 'pointer',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-              transition: 'transform 0.2s',
-              backgroundColor: '#fff'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
-            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-          >
-            {/* Image */}
-            <div style={{ height: '200px', overflow: 'hidden', backgroundColor: '#f9f9f9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img 
-                src={category.image} 
-                alt={category.name} 
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-              />
-            </div>
+            <div 
+              style={{ 
+                border: '1px solid #eee', 
+                borderRadius: '10px', 
+                overflow: 'hidden',
+                cursor: 'pointer',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
+                transition: 'transform 0.2s',
+                backgroundColor: '#fff'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+            >
+              {/* Image */}
+              <div style={{ height: '200px', overflow: 'hidden', backgroundColor: '#f9f9f9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img 
+                  src={category.image || 'https://placehold.co/400x300?text=Немає+зображення'} 
+                  alt={category.name} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                />
+              </div>
 
-            {/* Information about category */}
-            <div style={{ padding: '20px', textAlign: 'center' }}>
-              <h3 style={{ margin: '0 0 5px 0', fontSize: '18px', color: '#333' }}>
-                {category.name}
-              </h3>
-              {/* Show count of items in category */}
-              <p style={{ margin: 0, fontSize: '14px', color: '#888' }}>
-                {category.count} шт.
-              </p>
+              {/* Information about category */}
+              <div style={{ padding: '20px', textAlign: 'center' }}>
+                <h3 style={{ margin: '0 0 5px 0', fontSize: '18px', color: '#333' }}>
+                  {category.name}
+                </h3>
+                {/* Show count of items in category */}
+                <p style={{ margin: 0, fontSize: '14px', color: '#888' }}>
+                  {category.count} шт.
+                </p>
+              </div>
             </div>
-          </div>
           </Link>
         ))}
       </div>

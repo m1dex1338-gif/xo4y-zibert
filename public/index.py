@@ -4,7 +4,7 @@ import sys
 
 # Додаємо шлях до нашого проекту бекенду та віртуального оточення
 sys.path.insert(0, '/var/www/ch15abc6a5/ngs')
-sys.path.insert(0, '/var/www/ch15abc6a5/www/ngs-furniture.com.ua/venv/lib/python3.11/site-packages')
+sys.path.insert(0, '/var/www/ch15abc6a5/www/gns-furniture.com.ua/venv/lib/python3.11/site-packages')
 
 # Встановлюємо модуль налаштувань
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vdm_backend.settings')

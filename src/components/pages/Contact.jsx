@@ -1,7 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.phone.trim() || !formData.message.trim()) {
+      toast.error("Будь ласка, заповніть обов'язкові поля (Ім'я, Телефон та Повідомлення).");
+      return;
+    }
+
+    setLoading(true);
+    const toastId = toast.info('Надсилання повідомлення...', { autoClose: false });
+
+    fetch('/shop/contact/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        message: formData.message
+      })
+    })
+      .then(res => {
+        toast.dismiss(toastId);
+        if (!res.ok) {
+          return res.json().then(data => {
+            throw new Error(data.error || 'Помилка відправки повідомлення.');
+          });
+        }
+        return res.json();
+      })
+      .then(data => {
+        toast.success('Повідомлення успішно надіслано! Ми зв\'яжемося з вами найближчим часом.');
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          message: ''
+        });
+      })
+      .catch(err => {
+        toast.error(`Не вдалося надіслати повідомлення: ${err.message}`);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <>
       <ol className="section-banner py-3 position-relative mt-5">
@@ -49,7 +112,7 @@ function Contact() {
                   </div>
                   <div>
                     <h6 className="fw-bold mb-1">Email</h6>
-                    <p className="text-muted mb-0">info@vsedlyadomu.com</p>
+                    <p className="text-muted mb-0">info@ngs-furniture.com.ua</p>
                   </div>
                 </div>
 
@@ -73,30 +136,62 @@ function Contact() {
             <div className="card border-0 shadow-sm rounded-4 h-100">
               <div className="card-body p-5">
                 <h4 className="fw-bold mb-4">Залишити повідомлення</h4>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="row g-4">
                     <div className="col-md-6">
-                      <label className="form-label text-muted">Ваше Ім'я</label>
-                      <input type="text" className="form-control form-control-lg bg-light border-0" placeholder="Іван" />
+                      <label className="form-label text-muted">Ваше Ім'я *</label>
+                      <input 
+                        type="text" 
+                        className="form-control form-control-lg bg-light border-0" 
+                        placeholder="Іван" 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                     <div className="col-md-6">
-                      <label className="form-label text-muted">Телефон</label>
-                      <input type="text" className="form-control form-control-lg bg-light border-0" placeholder="+380..." />
+                      <label className="form-label text-muted">Телефон *</label>
+                      <input 
+                        type="text" 
+                        className="form-control form-control-lg bg-light border-0" 
+                        placeholder="+380..." 
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                     <div className="col-12">
                       <label className="form-label text-muted">Email (необов'язково)</label>
-                      <input type="email" className="form-control form-control-lg bg-light border-0" placeholder="email@example.com" />
+                      <input 
+                        type="email" 
+                        className="form-control form-control-lg bg-light border-0" 
+                        placeholder="email@example.com" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
                     </div>
                     <div className="col-12">
-                      <label className="form-label text-muted">Повідомлення</label>
-                      <textarea className="form-control form-control-lg bg-light border-0" rows="5" placeholder="Напишіть ваше запитання..."></textarea>
+                      <label className="form-label text-muted">Повідомлення *</label>
+                      <textarea 
+                        className="form-control form-control-lg bg-light border-0" 
+                        rows="5" 
+                        placeholder="Напишіть ваше запитання..."
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                      ></textarea>
                     </div>
                     <div className="col-12 mt-4">
-                      <button type="button" className="btn btn-dark btn-lg w-100 rounded-pill" onClick={(e) => {
-                          e.preventDefault();
-                          alert('Форма відправлена! Ми зв\'яжемося з Вами найближчим часом.');
-                      }}>
-                        Відправити
+                      <button 
+                        type="submit" 
+                        className="btn btn-dark btn-lg w-100 rounded-pill"
+                        disabled={loading}
+                      >
+                        {loading ? 'Надсилання...' : 'Відправити'}
                       </button>
                     </div>
                   </div>
@@ -106,6 +201,7 @@ function Contact() {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={3000} position="top-right" />
     </>
   );
 }

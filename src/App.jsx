@@ -15,6 +15,7 @@ import Contact from './components/pages/Contact'
 import NotFound from './components/pages/NotFound'
 import Checkout from './components/pages/Checkout'
 import Brands from './components/pages/Brands'
+import Dashboard from './components/pages/Dashboard'
 
 import GlobalCartModal from './components/modals/GlobalCartModal'
 
@@ -43,6 +44,9 @@ function App() {
 
         {/* Brands */}
         <Route path='/brands' element={<Brands/>}/>
+
+        {/* Admin Dashboard */}
+        <Route path='/dashboard' element={<Dashboard/>}/>
         
         {/* 404 */}
         <Route path='*' element={<NotFound/>}/>

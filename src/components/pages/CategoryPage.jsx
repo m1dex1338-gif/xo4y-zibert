@@ -164,7 +164,19 @@ function CategoryPage() {
     setFiltered(list)
   }, [query, inStockOnly, minPrice, maxPrice, selectedFilters, products])
 
-  if (loading) return <div className="container py-5 text-center"><div className="spinner-border text-dark" role="status"></div><p className="mt-3">Завантаження...</p></div>
+  if (loading) {
+    return (
+      <div className="gns-loader-container" style={{ margin: '100px auto' }}>
+        <div className="gns-loader">
+          <div className="gns-loader-ring"></div>
+          <div className="gns-loader-ring"></div>
+          <div className="gns-loader-ring"></div>
+          <div className="gns-loader-pulse"></div>
+        </div>
+        <div className="gns-loader-text">Завантаження товарів...</div>
+      </div>
+    );
+  }
   if (error) return <div className="container py-5 text-center text-danger">Помилка завантаження: {error}</div>
 
   return (

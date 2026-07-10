@@ -70,7 +70,7 @@ function Wishlist() {
         {wishlist.length === 0 ? (
             <div className="text-center">
                 <p className="lead text-muted">Ваш список бажань порожній</p>
-                <Link to="/shop" className="btn">
+                <Link to="/categories" className="btn">
                 <i className="ri-shopping-bag-line me-2"></i>
                 Переглянути товари</Link>
             </div>

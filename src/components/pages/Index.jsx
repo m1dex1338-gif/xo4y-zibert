@@ -14,10 +14,36 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 function Index() {
-
-  const[filterSortOption, setFilterSortOption] = useState('all');
-
+  const [filterSortOption, setFilterSortOption] = useState('all');
   const navigate = useNavigate();
+  const [popularProducts, setPopularProducts] = useState(MainProducts);
+
+  React.useEffect(() => {
+    const popularProductIds = ["2", "3", "138", "1818"];
+    Promise.all(
+      popularProductIds.map(id =>
+        fetch(`/shop/product/${id}`).then(res => {
+          if (!res.ok) throw new Error(`Product ${id} not found`);
+          return res.json();
+        })
+      )
+    )
+      .then(data => {
+        const formatted = data.map(item => ({
+          id: String(item.id),
+          name: item.name,
+          price: item.price,
+          images: item.images && item.images.length > 0 ? item.images : ['https://placehold.co/400x300?text=No+Image'],
+          in_stock: item.in_stock,
+          brand: item.brand,
+          article: item.article
+        }));
+        setPopularProducts(formatted);
+      })
+      .catch(err => {
+        console.error("Error fetching popular products dynamically:", err);
+      });
+  }, []);
 
   const addToWishlist = (product) => {
     const existing = JSON.parse(localStorage.getItem('wishlist')) || [];
@@ -81,7 +107,7 @@ function Index() {
               }}   
               className='mt-4 swiper position-relative' 
             >
-              {MainProducts.map(product => (
+              {popularProducts.map(product => (
                   <SwiperSlide key={product.id}>
                   <Link to={`/product/${product.id}`} className='text-decoration-none text-black'>
                     <div className="product-item text-center position-relative">

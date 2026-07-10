@@ -1,0 +1,215 @@
+/* GNS Dashboard Styles */
+
+.admin-loading-container {
+  min-height: 80vh;
+  background-color: var(--bg-color, #f8f9fa);
+  color: var(--text-color, #212529);
+}
+
+/* LOGIN LAYOUT */
+.admin-login-layout {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #111 0%, #222 100%);
+  color: #fff;
+  padding: 20px;
+}
+
+.login-card {
+  max-width: 420px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6) !important;
+}
+
+.login-card h3, .login-card p {
+  color: #fff !important;
+}
+
+.login-card label {
+  color: #aaa;
+}
+
+.login-card input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.login-card input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+  color: #fff;
+}
+
+/* DASHBOARD MAIN */
+.admin-dashboard-container {
+  min-height: 90vh;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.admin-dashboard-container h2 {
+  color: #111;
+}
+
+.admin-dashboard-container select, 
+.admin-dashboard-container input {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
+.admin-dashboard-container select:focus, 
+.admin-dashboard-container input:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th {
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6c757d;
+  padding: 14px 16px;
+}
+
+.table td {
+  padding: 14px 16px;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f3f5;
+  transition: background-color 0.15s ease;
+}
+
+/* CUSTOM MODAL WINDOW (Backdrop and form layout) */
+.modal-backdrop-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-content-custom {
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2) !important;
+}
+
+.modal-content-custom input, 
+.modal-content-custom select, 
+.modal-content-custom textarea {
+  border-radius: 6px;
+  padding: 9px 12px;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Reduced Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .login-card {
+    transition: none;
+  }
+  .login-card:hover {
+    transform: none;
+  }
+  .modal-content-custom {
+    animation: none;
+  }
+}
+
+/* GNS Custom Loader inside Backoffice */
+.admin-loading-container .gns-loader {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.admin-loading-container .gns-loader-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  animation: gns-spin 2s linear infinite;
+}
+
+.admin-loading-container .gns-loader-ring:nth-child(1) {
+  border-top-color: #000;
+  animation-delay: -0.5s;
+}
+
+.admin-loading-container .gns-loader-ring:nth-child(2) {
+  border-right-color: #333;
+  animation-delay: -1s;
+}
+
+.admin-loading-container .gns-loader-ring:nth-child(3) {
+  border-bottom-color: #666;
+  animation-delay: -1.5s;
+}
+
+.admin-loading-container .gns-loader-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: #000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: gns-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes gns-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gns-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-loading-container .gns-loader-ring {
+    animation-duration: 6s;
+  }
+  .admin-loading-container .gns-loader-core {
+    animation: none;
+  }
+}
