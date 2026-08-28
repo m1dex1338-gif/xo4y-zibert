@@ -8,48 +8,53 @@
 
 /* LOGIN LAYOUT */
 .admin-login-layout {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #111 0%, #222 100%);
-  color: #fff;
-  padding: 20px;
+  min-height: 85vh;
+  background: #f8f9fa;
+  color: #212529;
+  padding: 40px 20px;
 }
 
 .login-card {
-  max-width: 420px;
+  max-width: 440px;
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid #e9ecef !important;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12) !important;
 }
 
-.login-card h3, .login-card p {
-  color: #fff !important;
+.login-card h3 {
+  color: #111827 !important;
+}
+
+.login-card p {
+  color: #6b7280 !important;
 }
 
 .login-card label {
-  color: #aaa;
+  color: #374151;
 }
 
 .login-card input {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #111827;
+  border-radius: 8px;
+  padding: 10px 14px;
   transition: all 0.2s ease;
 }
 
 .login-card input:focus {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: none;
-  color: #fff;
+  background: #ffffff;
+  border-color: #111827;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
+  color: #111827;
 }
 
 /* DASHBOARD MAIN */

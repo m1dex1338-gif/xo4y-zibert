@@ -13,9 +13,9 @@ function Footer() {
               Високоякісні меблі для вашого комфорту та сучасного стилю життя. Мрійте, відпочивайте, насолоджуйтесь.
             </p>
             <div className="social-links d-flex gap-3">
-              <a href="#" className="social-icon"><i className="bi bi-facebook"></i></a>
-              <a href="#" className="social-icon"><i className="bi bi-instagram"></i></a>
-              <a href="#" className="social-icon"><i className="bi bi-twitter"></i></a>
+              {/* <a href="#" className="social-icon"><i className="bi bi-facebook"></i></a> */}
+              {/* <a href="#" className="social-icon"><i className="bi bi-instagram"></i></a> */}
+              {/* <a href="#" className="social-icon"><i className="bi bi-twitter"></i></a> */}
             </div>
           </div>
           
@@ -36,6 +36,7 @@ function Footer() {
               {/* <li><Link to="/shipping">Доставка і оплата</Link></li> */}
               {/* <li><Link to="/returns">Повернення</Link></li> */}
               <li><Link to="/contact">Контакти</Link></li>
+              <li><Link to="/dashboard">Панель управління</Link></li>
             </ul>
           </div>
 

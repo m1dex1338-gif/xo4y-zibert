@@ -197,6 +197,11 @@ function Nav() {
               <i className="bi bi-search fs-5 text-dark"></i>       
             </a>
           </li>
+          <li className="nav-item">
+            <Link to="/dashboard" onClick={closeMenu} title="Панель управління">
+              <i className="bi bi-person-gear fs-5 text-dark"></i>
+            </Link>
+          </li>
           <li className="nav-item position-relative">
             <Link to="/cart" onClick={closeMenu}>
               <i className="bi bi-bag fs-5 text-dark"></i>
@@ -280,6 +285,11 @@ function Nav() {
              <a href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
               <i className="bi bi-search fs-5 text-dark"></i>       
              </a>
+            </li>
+            <li className="nav-item">
+              <Link to="/dashboard" title="Панель управління">
+                <i className="bi bi-person-gear fs-5 text-dark"></i>
+              </Link>
             </li>
             {/* <li className="nav-item">
              <a href="#" data-bs-toggle='modal' data-bs-target='#signupModal'>

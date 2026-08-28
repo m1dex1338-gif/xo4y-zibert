@@ -173,7 +173,7 @@ function Dashboard() {
             article: data.article || '',
             name: data.name || '',
             category_id: data.category_id || selectedCategoryId,
-            price: data.price ? parseFloat((data.price / 40.0).toFixed(2)) : 0, // Convert UAH back to USD for editing (assume course 40)
+            price: data.price ? parseFloat(data.price) : 0,
             in_stock: data.in_stock,
             brand: data.brand || '',
             color: data.color || '',
@@ -484,7 +484,7 @@ function Dashboard() {
                     <th style={{width: '70px'}}>Фото</th>
                     <th style={{width: '120px'}}>Артикул</th>
                     <th>Назва товару</th>
-                    <th style={{width: '100px'}}>Ціна ($)</th>
+                    <th style={{width: '100px'}}>Ціна (грн)</th>
                     <th style={{width: '120px'}}>Наявність</th>
                     <th style={{width: '180px'}} className="text-end">Дії</th>
                   </tr>
@@ -506,7 +506,7 @@ function Dashboard() {
                         <div className="fw-semibold text-truncate" style={{maxWidth: '300px'}} title={p.name}>{p.name}</div>
                         <span className="badge bg-light text-muted border small">{p.brand || 'Без бренду'}</span>
                       </td>
-                      <td><span className="fw-bold text-success">${p.price || 0}</span></td>
+                      <td><span className="fw-bold text-success">{p.price || 0} ₴</span></td>
                       <td>
                         {p.in_stock ? (
                           <span className="badge bg-success-subtle text-success border border-success-subtle">В наявності</span>
@@ -623,7 +623,7 @@ function Dashboard() {
                     </select>
                   </div>
                   <div className="col-md-3">
-                    <label className="form-label fw-semibold small">Ціна (USD / $)</label>
+                    <label className="form-label fw-semibold small">Ціна (грн / ₴)</label>
                     <input 
                       type="number" 
                       step="0.01" 
